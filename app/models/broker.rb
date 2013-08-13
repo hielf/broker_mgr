@@ -27,13 +27,13 @@ end
 #
 # Table name: brokers
 #
-#  id                   :integer(4)      not null, primary key
+#  id                   :integer(38)     not null, primary key
 #  broker_code          :string(255)
 #  broker_name          :string(255)
-#  branch_id            :integer(4)
+#  branch_id            :integer(38)
 #  broker_type          :string(255)
 #  gender               :string(255)
-#  age                  :integer(4)
+#  age                  :integer(38)
 #  broker_level         :string(255)
 #  broker_status        :string(255)
 #  jobstatus            :string(255)
@@ -61,7 +61,7 @@ end
 #  cert_valite_date     :string(255)
 #  cert_get_date        :string(255)
 #  exam_pass_date       :string(255)
-#  risk_balance         :float
+#  risk_balance         :decimal(, )
 #  broker_degree        :string(255)
 #  post                 :string(255)
 #  job_qualify          :string(255)

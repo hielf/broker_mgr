@@ -29,6 +29,7 @@ gem 'lazy_high_charts', '~> 1.1.5'
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
+gem 'cancan'
 # gem 'simple-navigation'
 
 # To use ActiveModel has_secure_password
@@ -60,6 +61,8 @@ group :development do
   gem 'annotate', '~> 2.4.1.beta'
   gem 'faker', '1.0.1'
   gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :test do

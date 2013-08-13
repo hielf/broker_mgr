@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                 :integer(4)      not null, primary key
+#  id                 :integer(38)     not null, primary key
 #  name               :string(255)
 #  email              :string(255)
 #  created_at         :datetime
@@ -10,12 +10,15 @@
 #  encrypted_password :string(255)
 #  salt               :string(255)
 #  admin              :boolean(1)      default(FALSE)
+#  usercode           :string(255)
 #
 
 class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids
   
+  has_many :assignments
+  has_many :roles, :through => :assignments
   has_many :userpositionrels, :dependent => :destroy, 
                               :foreign_key => "userid"
   has_many :userpositions, :through => :userpositionrels, 

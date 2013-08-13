@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417181951) do
+ActiveRecord::Schema.define(:version => 20130812172400) do
 
   create_table "KSTAR.test_broker", :id => false, :force => true do |t|
     t.integer "branch_no",         :limit => 5,  :precision => 5,  :scale => 0, :null => false
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(:version => 20130417181951) do
     t.integer "reserve",          :limit => 10, :precision => 10, :scale => 0, :null => false
     t.integer "operator_rights",  :limit => 2,                                 :null => false
     t.integer "dynpassword",      :limit => 2
+  end
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id",    :precision => 38, :scale => 0
+    t.integer  "role_id",    :precision => 38, :scale => 0
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   create_table "branches", :force => true do |t|

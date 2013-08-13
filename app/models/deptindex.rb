@@ -2,11 +2,11 @@
 #
 # Table name: deptindices
 #
-#  id            :integer(4)      not null, primary key
-#  department_id :integer(4)
+#  id            :integer(38)     not null, primary key
+#  department_id :integer(38)
 #  month_id      :string(255)
-#  indextype     :integer(4)
-#  occursum      :float(19)
+#  indextype     :integer(38)
+#  occursum      :decimal(, )
 #  remark        :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime

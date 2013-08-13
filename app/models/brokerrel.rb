@@ -14,4 +14,14 @@ class Brokerrel < ActiveRecord::Base
   
   validates :broker_id,     :presence => true
   validates :rel_broker_id, :presence => true
-end
+end\n# == Schema Information
+#
+# Table name: brokerrels
+#
+#  id            :integer(38)     not null, primary key
+#  broker_id     :integer(38)
+#  rel_broker_id :integer(38)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
