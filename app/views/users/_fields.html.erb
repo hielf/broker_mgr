@@ -2,4 +2,7 @@
 <%= f.input :email, :label => 'Email', :required => false %>
 <%= f.input :password, :label => '密码', :class => "help-inline", :required => false %>
 <%= f.input :password_confirmation, :label => '确认' %>
-<%= f.association :userpositions, :collection => @userpositions, :label => '岗位', :input_html => { :multiple => true } %>
+<%= f.association :userpositions, :collection => @userpositions, :label => '岗位', 
+									:input_html => { :multiple => true } %>
+<%= f.association :roles, :collection => Role.all, :label => '角色', 
+									:input_html => { :multiple => true } %>

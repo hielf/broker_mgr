@@ -8,10 +8,10 @@ end
 # Table name: roles
 #
 #  id         :integer(38)     not null, primary key
-#  role_name  :string(255)
 #  status     :integer(38)
 #  memo       :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
+#  name       :string(255)
 #
 

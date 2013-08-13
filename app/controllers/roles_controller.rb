@@ -8,7 +8,7 @@ class RolesController < ApplicationController
 
   def show
     @role  = Role.find(params[:id])
-    @title = @role.role_name
+    @title = @role.name
   end
 
   def new
@@ -19,7 +19,7 @@ class RolesController < ApplicationController
   def create
     @role = Role.new(params[:role])
     if @role.save
-      redirect_to @role, :flash => { :success => "角色新建成功"}
+      redirect_to roles_path, :flash => { :success => "角色新建成功"}
     else  
       @title = "新建角色"
       render 'new'
@@ -44,8 +44,8 @@ class RolesController < ApplicationController
   end
     
   def destroy
-    # User.find(params[:id]).destroy
-    @role.destroy
+    Role.find(params[:id]).destroy
+    # @role.destroy
     # flash[:success] = "用户已删除"
     redirect_to roles_path, :flash => { :success => "角色已删除" }
   end

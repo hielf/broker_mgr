@@ -15,7 +15,8 @@
 
 class User < ActiveRecord::Base
   attr_accessor   :password
-  attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids
+  attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids,
+                  :role_ids
   
   has_many :assignments
   has_many :roles, :through => :assignments
@@ -43,6 +44,10 @@ class User < ActiveRecord::Base
   
   def position!(position)
     userpositionrels.create!(:positionid => position.id )
+  end
+  
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
   
   class << self
