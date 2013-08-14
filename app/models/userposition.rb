@@ -5,6 +5,8 @@ class Userposition < ActiveRecord::Base
                               :foreign_key => "positionid"
   has_many :users,            :through => :userpositionrels, 
                               :source => :user     
+                              
+  validates :name,  :presence => true, :length => { :maximum => 20 }
 end
 # == Schema Information
 #

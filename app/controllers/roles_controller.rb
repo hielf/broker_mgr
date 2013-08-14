@@ -30,7 +30,7 @@ class RolesController < ApplicationController
     # raise request.inspect
     @role  = Role.find(params[:id])
     @title = "角色设置"
-    @userpositions = Userposition.all
+    @roles = Role.all
   end
   
   def update

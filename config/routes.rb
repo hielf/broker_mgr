@@ -1,6 +1,7 @@
 Cmwp::Application.routes.draw do
   resources :users
   resources :roles
+  resources :userpositions
   resources :sessions, :only => [:new, :create, :destroy]
   resources :departments, :only => [:index, :show] do
     resources :deptindices do
