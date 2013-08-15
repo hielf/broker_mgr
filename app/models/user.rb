@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
   
+  def has_position?(position_sym)
+    userpositions.any? { |p| p.name.underscore.to_sym == posposition_symition }
+  end
+  
   class << self
     def authenticate(usercode, submmited_password)
       user = User.find_by_usercode(usercode)

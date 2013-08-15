@@ -3,6 +3,11 @@ class Workflow < ActiveRecord::Base
   
   has_many :flowpositionrels, :dependent => :destroy, 
                               :foreign_key => "flowid"
+                              
+  validates :name,  :presence   => true,
+                    :length     => { :maximum => 20 },
+                    :uniqueness => true
+  validates :steps, :presence   => true
 end
 # == Schema Information
 #

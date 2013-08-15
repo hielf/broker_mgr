@@ -1,0 +1,3 @@
+<%= f.input :code, as: :hidden, input_html: { value: (SecureRandom.hex(3) if @workflow.code.nil?) || @workflow.code } %>
+<%= f.input :name, :label => '岗位名称', :required => true %>
+<%= f.input :steps, :label => '步骤', :required => true %>

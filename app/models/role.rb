@@ -4,7 +4,9 @@ class Role < ActiveRecord::Base
   has_many :assignments
   has_many :users, :through => :assignments
   
-  validates :name,  :presence => true, :length => { :maximum => 20 }
+  validates :name,  :presence => true, 
+                    :length => { :maximum => 20 },
+                    :uniqueness => true
 end
 # == Schema Information
 #

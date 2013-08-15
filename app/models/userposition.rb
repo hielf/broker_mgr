@@ -6,7 +6,7 @@ class Userposition < ActiveRecord::Base
   has_many :users,            :through => :userpositionrels, 
                               :source => :user     
                               
-  validates :name,  :presence => true, :length => { :maximum => 20 }
+  validates :name,  :presence => true, :length => { :maximum => 20 }, :uniqueness => true
 end
 # == Schema Information
 #

@@ -35,7 +35,7 @@ class UserpositionsController < ApplicationController
   def update
     @userposition  = Userposition.find(params[:id])
     if @userposition.update_attributes(params[:userposition])
-      redirect_to @userposition, :flash => { :success => "审批岗位更新成功" }
+      redirect_to userpositions_path, :flash => { :success => "审批岗位更新成功" }
     else  
       @title = "审批岗位"
       render 'edit'
