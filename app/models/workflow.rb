@@ -1,13 +1,18 @@
 class Workflow < ActiveRecord::Base
-  attr_accessible :code, :name, :steps
+  attr_accessible :code, :name, :steps, :workflowsteps_attributes
   
-  has_many :flowpositionrels, :dependent => :destroy, 
-                              :foreign_key => "flowid"
+  # has_many :flowpositionrels, :dependent => :destroy, 
+  #                              :foreign_key => "flowid"
+  has_many :workflowsteps, :dependent => :destroy
+  has_many :userpositions, :through => :workflowsteps
+  
+  accepts_nested_attributes_for :workflowsteps
                               
   validates :name,  :presence   => true,
                     :length     => { :maximum => 20 },
                     :uniqueness => true
   validates :steps, :presence   => true
+  
 end
 # == Schema Information
 #

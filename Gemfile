@@ -18,7 +18,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem "therubyracer"
   gem "less-rails"
-  gem 'twitter-bootstrap-rails'
+  # gem 'twitter-bootstrap-rails'
+  gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
 end
 
 gem 'will_paginate', '~> 3.0.3'
@@ -30,6 +31,7 @@ gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
+gem 'wicked'
 # gem 'simple-navigation'
 
 # To use ActiveModel has_secure_password

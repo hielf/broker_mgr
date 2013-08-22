@@ -11,9 +11,10 @@ end
 #
 # Table name: brokerrels
 #
-#  id            :integer(4)      not null, primary key
-#  broker_id     :integer(4)
-#  rel_broker_id :integer(4)
+#  id            :integer(38)     not null, primary key
+#  broker_id     :integer(38)
+#  rel_broker_id :integer(38)
 #  created_at    :datetime
 #  updated_at    :datetime
 #
+
