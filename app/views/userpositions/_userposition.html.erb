@@ -3,7 +3,7 @@
 	<% if can? :delete, Userposition %>
 	  <td>
 			<%= link_to "删除", userposition_path(userposition), :method => :delete, :confirm => '确认删除该审批岗位?', 
-											   :class => 'btn btn-mini btn-danger pull-right' %>
+											   :class => 'btn btn-xs btn-danger pull-right' %>
 		</td>
 	<% end %>
 </tr>

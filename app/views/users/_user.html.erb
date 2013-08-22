@@ -4,7 +4,7 @@
 	<% if current_user.admin? %>
 	<td>
 		<%= link_to "删除", user_path(user), :method => :delete, :confirm => '确认删除该用户?', 
-										   :class => 'btn btn-mini btn-danger' %>
+										   :class => 'btn btn-sm btn-danger' %>
 	</td>
 	<% end %>
 </tr>

@@ -1,68 +1,66 @@
-<ul class="breadcrumb">
+<ol class="breadcrumb">
 <% if @title == "选择分公司" %>
   <li>
-    <%= link_to "", departments_path, :class => "icon-home" %>
-	<span class="divider">•</span>
-	<li class="active"><strong><%= @title %></strong></li>
+    <%= link_to "", departments_path, :class => "glyphicon glyphicon-home" %>
+	<!-- <span class="divider">•</span> -->
+	<li class="active"><%= @title %></li>
   </li>
 <% elsif !@department.nil? && @title == @department.name %>
   <li>
-    <%= link_to "", departments_path, :class => "icon-home" %>
-	<span class="divider">•</span>
+    <%= link_to "", departments_path, :class => "glyphicon glyphicon-home" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-	<li class="active"><strong><%= @department.name %></strong></li>
+	<li class="active"><%= @department.name %></li>
 	<!-- <span class="divider">|</span> -->
   </li>
 <% elsif !@branch.nil? && @title == @branch.name %>
   <li>
-    <%= link_to "", departments_path, :class => "icon-home" %>
-	<span class="divider">•</span>
+    <%= link_to "", departments_path, :class => "glyphicon glyphicon-home" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-    <strong><%= link_to @father_department.name, @father_department, :class => "active" %></strong>
-	<span class="divider">•</span>
+    <%= link_to @father_department.name, @father_department, :class => "active" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-	<li class="active"><strong><%= @branch.name %></strong></li>
+	<li class="active"><%= @branch.name %></li>
 	<!-- <span class="divider">|</span> -->
   </li>
 <% elsif @title == "证券经纪人" || @title == "营销经理" || @title == "全日制营销经理" || @title == "前台员工" %>
   <li>
-    <%= link_to "", departments_path, :class => "icon-home" %>
-	<span class="divider">•</span>
+    <%= link_to "", departments_path, :class => "glyphicon glyphicon-home" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-    <strong><%= link_to @father_department.name, @father_department, :class => "active" %></strong>
-	<span class="divider">•</span>
+    <%= link_to @father_department.name, @father_department, :class => "active" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-	<li class="active"><strong><%= @branch.name %></strong></li>
+	<li class="active"><%= @branch.name %></li>
 	<!-- <span class="divider">|</span> -->
   </li>
 <% elsif @title.include? "-" %>
   <li>
-    <%= link_to "", departments_path, :class => "icon-home" %>
-	<span class="divider">•</span>
+    <%= link_to "", departments_path, :class => "glyphicon glyphicon-home" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-    <strong><%= link_to @father_department.name, @father_department, :class => "active" %></strong>
-	<span class="divider">•</span>
+    <%= link_to @father_department.name, @father_department, :class => "active" %>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
 	<li>
-		<strong><%= link_to @branch.name, @branch, :class => "active" %></strong>
+		<%= link_to @branch.name, @branch, :class => "active" %>
 	</li>
-	<span class="divider">•</span>
+	<!-- <span class="divider">•</span> -->
   </li>
   <li>
-	<li class="active"><strong><%= @broker.broker_code + " - " + @broker.broker_name %></strong></li>
+	<li class="active"><%= @broker.broker_code + " - " + @broker.broker_name %></li>
   </li>
 <% else %>
   <li>
-    <%= link_to "", root_path, :class => "icon-home" %>
-	<span class="divider">•</span>
-	<li class="active"><strong><%= @title %></strong></li>
-  </li>
+    <%= link_to "", root_path, :class => "glyphicon glyphicon-home" %>
+	<li class="active"><%= @title %>
 <% end %>
-</ul>
+</ol>

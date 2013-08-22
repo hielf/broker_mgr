@@ -17,9 +17,10 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'uglifier', '>= 1.0.3'
   gem "therubyracer"
-  gem "less-rails"
+  # gem "less-rails"
   # gem 'twitter-bootstrap-rails'
-  gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+  gem 'less-rails-bootstrap'
+  gem 'jquery-ui-rails'
 end
 
 gem 'will_paginate', '~> 3.0.3'

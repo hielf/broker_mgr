@@ -2,7 +2,7 @@
 	<div class="well">
 		<legend>工作流环节</legend>
 		<%= f.input :step, :collection => (1..6), :label => '步骤',
-		 						:input_html => { :class => "input-sm" } %>
+		 						:input_html => { :class => "input-small" } %>
 		<%= f.input :userposition_id, :collection => Userposition.all, :label => '角色',
 		 						:input_html => { :class => "input-xlarge" } %>
 		<%= f.input :memo, as: :text, :label => '备注',
