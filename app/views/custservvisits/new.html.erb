@@ -1,47 +1,20 @@
-<div class="row">
-	<div class="col-md-9">
-		<!-- <div class="well"> -->
-			<legend><p class="lead text-center muted">任务指派</p></legend>
-				<%= simple_form_for @custservvisit, :html => { :class => 'well form-horizontal' } do |f| %>
-					<%= render 'fields', :f => f %>
-					<%= f.submit "确认", :class => 'btn btn-primary btn-sm' %>
-					<%= link_to '取消', root_path, :class => 'btn btn-default btn-sm' %>
-				<% end %>
-				<form class="form-horizontal" role="form">
-				  <div class="form-group">
-				    <label for="inputEmail1" class="col-lg-2 control-label">Email</label>
-				    <div class="col-lg-10">
-				      <input type="email" class="form-control" id="inputEmail1" placeholder="Email">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <label for="inputPassword1" class="col-lg-2 control-label">Password</label>
-				    <div class="col-lg-10">
-				      <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-lg-offset-2 col-lg-10">
-				      <div class="checkbox">
-				        <label>
-				          <input type="checkbox"> Remember me
-				        </label>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-lg-offset-2 col-lg-10">
-				      <button type="submit" class="btn btn-default">Sign in</button>
-				    </div>
-				  </div>
-				</form>
-		<!-- </div> -->
-	</div>
-	<div class="col-md-3">
-		<div class="alert alert-warning alert-dismissable">
-			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-		  <h4>帮助</h4>
-		  工作流程在此处定义。
+<div class="row-fluid">
+	<div class="span9 well">
+		<legend><p class="lead text-center muted">任务指派</p></legend>
+		<%= simple_form_for @custservvisit, :html => { :class => 'form-horizontal' } do |f| %>
+			<%= render 'fields', :f => f %>
+			<div class="form-actions">
+				<%= f.submit "确认", :class => 'btn btn-primary' %>
+				<%= link_to '取消', root_path, :class => 'btn' %>
+			</div>
+		  </fieldset>
+		<% end %>
 		</div>
-	</div>
+		<div class="span3">
+			<div class="alert alert-block">
+			  <button type="button" class="close" data-dismiss="alert">&times;</button>
+			  <h4>帮助</h4>
+			  工作流程在此处定义。
+			</div>
+		</div>
 </div>

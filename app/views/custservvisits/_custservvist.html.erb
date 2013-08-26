@@ -5,7 +5,7 @@
 	<% if can? :delete, Workflow %>
 	  <td>
 			<%= link_to "删除", workflow_path(workflow), :method => :delete, :confirm => '确认删除该工作流程?', 
-											   :class => 'btn btn-sm btn-danger pull-right' %>
+											   :class => 'btn btn-mini btn-danger pull-right' %>
 		</td>
 	<% end %>
 </tr>

@@ -5,8 +5,7 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery.ui.all
+//= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require bootstrap-datetimepicker
 //= require_tree .
