@@ -2,6 +2,6 @@
 <%= f.input :capital_account, :label => "资金账号" %>
 <%= f.input :cust_name, :label => '客户/公司名称' %>
 <%= f.input :plan_location, :label => '地址' %>
-<%= f.input :plan_date, :label => '时间' %>
+<%= f.input :plan_date,  :as => :datetime_picker, :label => '时间' %>
 <%= f.input :user_id, :collection => User.all, :label => '负责营销人员' %>
 </fieldset>

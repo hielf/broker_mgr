@@ -18,8 +18,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem "therubyracer"
   gem "less-rails"
-  # gem 'twitter-bootstrap-rails'
-  gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+  gem 'twitter-bootstrap-rails'
+  #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+  gem 'jquery-ui-rails'
 end
 
 gem 'will_paginate', '~> 3.0.3'
@@ -32,6 +33,8 @@ gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
 gem 'wicked'
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
+                            :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'
 
 # To use ActiveModel has_secure_password

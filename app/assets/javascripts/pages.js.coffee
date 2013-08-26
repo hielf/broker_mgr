@@ -1,3 +1,4 @@
+
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
@@ -13,4 +14,4 @@ jQuery ->
 			# $("#link_broker_id").val ui.item.id
 			false
 	 })	.data("autocomplete")._renderItem = (ul, item) ->
-		    $("<li></li>").data("item.autocomplete", item).append("<a>" + item.broker_code + "-" + item.broker_name + "</a>").appendTo ul
+		    $("<li></li>").data("item.autocomplete", item).append("<a>" + item.broker_code + "-" + item.broker_name + "</a>").appendTo ul 
