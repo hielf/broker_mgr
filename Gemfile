@@ -21,6 +21,7 @@ group :assets do
   # gem 'twitter-bootstrap-rails'
   gem 'less-rails-bootstrap'
   gem 'jquery-ui-rails'
+  gem 'bootstrap-datetimepicker-rails'
 end
 
 gem 'will_paginate', '~> 3.0.3'
