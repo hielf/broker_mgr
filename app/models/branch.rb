@@ -16,6 +16,7 @@
 class Branch < ActiveRecord::Base
   attr_accessible :code, :name
   belongs_to :department
+  belongs_to :user
   has_many :brokers
   has_many :branchindices
   

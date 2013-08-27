@@ -33,6 +33,7 @@ gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
 gem 'cancan'
 gem 'wicked'
+gem "wice_grid", '3.3.1'
 gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
                             :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'

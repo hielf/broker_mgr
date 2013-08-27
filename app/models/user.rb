@@ -11,6 +11,8 @@
 #  salt               :string(255)
 #  admin              :boolean(1)      default(FALSE)
 #  usercode           :string(255)
+#  branch_id          :integer(38)
+#  department_id      :integer(38)
 #
 
 class User < ActiveRecord::Base
@@ -19,6 +21,8 @@ class User < ActiveRecord::Base
                   :role_ids
   
   has_many :assignments
+  has_many :branches
+  has_many :departments
   has_many :roles, :through => :assignments
   has_many :userpositionrels, :dependent => :destroy, 
                               :foreign_key => "userid"

@@ -1,8 +1,10 @@
 # encoding: utf-8
 class DepartmentsController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :show]
+  
   def index
-    @departments = Department.all
+    @departments = Department.accessible_by(current_ability)
     @department  = Department.find_by_code("0000")
     @title       = "选择分公司"
     @timeperiod  = time_period(time)

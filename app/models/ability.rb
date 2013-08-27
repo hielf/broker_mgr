@@ -5,6 +5,13 @@ class Ability
     user ||= User.new # in case of guest
     if user.has_role? :系统管理员
       can :manage, :all
+    elsif user.has_role? :营业部管理
+      can :read, Branch, :id => user.branch_id
+    elsif user.has_role? :分公司管理
+      can :read, Department, :id => user.department_id
+      can :read, Branch, :department_id => user.department_id
+    elsif user.has_role? :营销人员
+      can :read, Branch, :id => user.branch_id
     else
       can :read, :all
     end

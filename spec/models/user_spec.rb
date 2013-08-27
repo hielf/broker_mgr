@@ -182,5 +182,7 @@ end
 #  salt               :string(255)
 #  admin              :boolean(1)      default(FALSE)
 #  usercode           :string(255)
+#  branch_id          :integer(38)
+#  department_id      :integer(38)
 #
 
