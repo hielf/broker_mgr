@@ -1,0 +1,18 @@
+<%= define_grid(@users_grid, :hide_submit_button => true, :hide_reset_button => true) do |g|
+
+  g.column :name => '用户代码', :attribute => 'usercode', :detach_with_id => :usercode_filter do |user|
+    user.usercode
+  end
+
+  g.column :name => '用户姓名', :attribute => 'name', :detach_with_id => :name_filter do |user|
+    user.name
+  end
+
+  g.column :name => '是否管理员'  do |user|
+    user.admin? ? 'Yes' : 'No'
+  end
+
+  g.column do |user|
+    link_to('修改', edit_user_path(user))
+  end
+end -%>

@@ -1,12 +1,20 @@
 # encoding: utf-8
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
 
   def index
     @users = User.order("name").paginate(:page => params[:page]).per_page(20)
+    @users_grid = initialize_grid(User, 
+              :name => 'users',
+              :enable_export_to_csv => true,
+              :csv_field_separator => ';',
+              :csv_file_name => '导出',
+              :per_page => 40)
     @title = "用户"
+    export_grid_if_requested('users' => 'grid')
   end
 
   def show
