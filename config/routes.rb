@@ -1,5 +1,7 @@
 Cmwp::Application.routes.draw do
-  resources :users
+  resources :users do
+    get 'usersettings', :on => :member
+  end
   resources :roles
   resources :userpositions
   resources :workflows

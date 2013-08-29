@@ -1,5 +1,9 @@
-<%= define_grid(@users_grid, :hide_submit_button => true, :hide_reset_button => true) do |g|
-
+<%= define_grid(@users_grid) do |g|
+	
+	g.blank_slate  do
+	  "没有记录"
+	end
+	
   g.column :name => '用户代码', :attribute => 'usercode', :detach_with_id => :usercode_filter do |user|
     user.usercode
   end
@@ -8,11 +12,17 @@
     user.name
   end
 
-  g.column :name => '是否管理员'  do |user|
-    user.admin? ? 'Yes' : 'No'
+	g.column :name => '所辖分公司', :attribute => 'id', :model => Department,
+					 :detach_with_id => :department_filter, custom_filter: Department.find(:all).map{|dp| [dp.name, dp.id]}  do |user|
+    user.department.name if user.department
+  end
+
+	g.column :name => '所辖营业部', :attribute => 'id', :model => Branch, 
+					 :detach_with_id => :branch_filter, custom_filter: Branch.find(:all).map{|br| [br.name, br.id]}  do |user|
+    user.branch.name if user.branch
   end
 
   g.column do |user|
-    link_to('修改', edit_user_path(user))
+    link_to('设置', usersettings_user_path(user))
   end
 end -%>

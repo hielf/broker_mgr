@@ -18,11 +18,12 @@
 class User < ActiveRecord::Base
   attr_accessor   :password
   attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids,
-                  :role_ids
+                  :role_ids, :branch_id, :department_id
+  
+  belongs_to :branch
+  belongs_to :department
   
   has_many :assignments
-  has_many :branches
-  has_many :departments
   has_many :roles, :through => :assignments
   has_many :userpositionrels, :dependent => :destroy, 
                               :foreign_key => "userid"
@@ -33,9 +34,8 @@ class User < ActiveRecord::Base
   
   validates :name,  :presence   => true,
                     :length     => { :maximum => 20 }
-  # validates :email, :presence   => true,
-  #                   :format     => { :with => email_regex  },
-  #                   :uniqueness => { :case_sensitive => false }
+  validates :usercode, :presence   => true,
+                       :uniqueness => true
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 5..20 }

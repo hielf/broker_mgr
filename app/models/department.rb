@@ -15,7 +15,7 @@
 class Department < ActiveRecord::Base
   attr_accessible :code, :name
   
-  belongs_to :user
+  has_many   :users
   has_many   :branches
   has_many   :deptindices
   

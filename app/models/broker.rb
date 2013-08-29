@@ -5,6 +5,8 @@ class Broker < ActiveRecord::Base
   has_many :brokerrels, :dependent => :destroy,
                         :foreign_key => "rel_broker_id"
   has_many :relbrokers, :through => :brokerrels, :source => :broker
+  has_many :custbrokerrels
+  has_many :custs, :through => :custbrokerrels
   
   default_scope :order => 'brokers.broker_code'
   

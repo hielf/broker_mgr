@@ -2,17 +2,20 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
-  before_filter :correct_user, :only => [:edit, :update]
-  before_filter :admin_user,   :only => :destroy
+  # before_filter :correct_user, :only => [:edit, :update]
+  # before_filter :admin_user,   :only => :destroy
 
   def index
     @users = User.order("name").paginate(:page => params[:page]).per_page(20)
+    @department = params[:department]
     @users_grid = initialize_grid(User, 
+              :include => [:department, :branch],
+              # :conditions => {:department => @department},
               :name => 'users',
               :enable_export_to_csv => true,
               :csv_field_separator => ';',
               :csv_file_name => '导出',
-              :per_page => 40)
+              :per_page => 20)
     @title = "用户"
     export_grid_if_requested('users' => 'grid')
   end
@@ -20,6 +23,11 @@ class UsersController < ApplicationController
   def show
     @user  = User.find(params[:id])
     @title = @user.name
+  end
+
+  def usersettings
+    @user  = User.find(params[:id])
+    @title = "用户设置" +" "+ @user.name
   end
 
   def new
@@ -48,12 +56,23 @@ class UsersController < ApplicationController
   
   def update
     @user  = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      redirect_to @user, :flash => { :success => "用户资料更新成功" }
-    else  
-      @title = "用户设置"
-      render 'edit'
-    end 
+    @assignments = params[:user][:role_ids]
+    @department = params[:user][:department_id]
+    if @assignments.present?
+       @user.update_attribute :role_ids, params[:user][:role_ids]
+       @user.update_attribute :userposition_ids, params[:user][:userposition_ids]
+        redirect_to @user, :flash => { :success => "用户设置成功" }
+    elsif @department.present?
+       @user.update_attribute :department_id, params[:user][:department_id]
+        redirect_to @user, :flash => { :success => "用户所辖分公司设置成功" }
+    else
+      if @user.update_attributes(params[:user])
+        redirect_to @user, :flash => { :success => "用户设置成功" }
+      else  
+        @title = "用户设置"
+        render 'edit'
+      end
+    end
   end
     
   def destroy
