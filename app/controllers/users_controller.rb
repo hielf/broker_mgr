@@ -8,9 +8,10 @@ class UsersController < ApplicationController
   def index
     @users = User.order("name").paginate(:page => params[:page]).per_page(20)
     @department = params[:department]
+    # usergrid = User.accessible_by(current_ability, :read)
     @users_grid = initialize_grid(User, 
+              :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
               :include => [:department, :branch],
-              # :conditions => {:department => @department},
               :name => 'users',
               :enable_export_to_csv => true,
               :csv_field_separator => ';',

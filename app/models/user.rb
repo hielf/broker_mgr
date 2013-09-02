@@ -42,6 +42,14 @@ class User < ActiveRecord::Base
                        
   before_save :encrypt_password
   
+  default_scope  :order => 'users.usercode' 
+  
+  scope :valid_user, where(:status => Dict.find_by_dict_type_and_code("UserBase.status", 1) ) 
+  
+  def to_label
+    "#{usercode} | #{name}"
+  end
+  
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end

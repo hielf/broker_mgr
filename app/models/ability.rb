@@ -3,17 +3,25 @@ class Ability
 
   def initialize(user)
     user ||= User.new # in case of guest
+    
+    alias_action :create, :read, :update, :destroy, :to => :crud
+    
     if user.has_role? :系统管理员
       can :manage, :all
     elsif user.has_role? :营业部管理
       can :read, Branch, :id => user.branch_id
+      can :read, User,   :branch_id => user.branch_id
+      can :read, Broker, :branch_id => user.branch_id
+      can :crud, Custservvisit
     elsif user.has_role? :分公司管理
       can :read, Department, :id => user.department_id
       can :read, Branch, :department_id => user.department_id
+      can :read, User,   :department_id => user.department_id
+      can :crud, Custservvisit
     elsif user.has_role? :营销人员
       can :read, Branch, :id => user.branch_id
     else
-      can :read, :all
+      # can :read, :all
     end
   end
     # Define abilities for the passed in user here. For example:

@@ -1,7 +1,7 @@
 class Workflowexe < ActiveRecord::Base
   attr_accessible :content, :workflow_id, :remark, :step, :user_id
   
-  has_many :custservvisits
+  has_one :custservvisit
 end
 # == Schema Information
 #

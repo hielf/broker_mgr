@@ -20,6 +20,11 @@ class Department < ActiveRecord::Base
   has_many   :deptindices
   
   default_scope   :order => 'departments.code'
+  
+  def to_label
+    "#{code} | #{name}"
+  end
+  
 end
 
 

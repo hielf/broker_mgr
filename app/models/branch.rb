@@ -23,6 +23,10 @@ class Branch < ActiveRecord::Base
   
   default_scope   :order => 'branches.code' 
   
+  def to_label
+    "#{code} | #{name}"
+  end
+  
   # def typebrokers(broker_type)
   #   Broker.typebrokers(broker_type)
   # end

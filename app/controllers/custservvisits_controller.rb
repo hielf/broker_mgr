@@ -1,4 +1,5 @@
 class CustservvisitsController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate
   
   def new
@@ -9,6 +10,7 @@ class CustservvisitsController < ApplicationController
   def create
     @custservvisit = Custservvisit.new(params[:custservvisit])
     if @custservvisit.save
+      Workflowexe.create!(:step => 1, :user_id => current_user.id)
       redirect_to root_path, :flash => { :success => "客户拜访任务已下达"}
     else  
       @title = "客户拜访任务"
