@@ -1,7 +1,9 @@
 class Workflowexe < ActiveRecord::Base
-  attr_accessible :content, :workflow_id, :remark, :step, :user_id
+  attr_accessible :content, :workflow_id, :remark, :step, :user_id, :custservvisit_attributes
   
   has_one :custservvisit
+  
+  accepts_nested_attributes_for :custservvisit
 end
 # == Schema Information
 #

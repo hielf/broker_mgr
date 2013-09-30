@@ -8,9 +8,13 @@ class CustservvisitsController < ApplicationController
   end
   
   def create
+    @workflowexe = Workflowexe.new({:step => 1, :user_id => current_user.id, 
+                                    :workflow_id => Workflow.find_by_code("1001").id})
+    @workflowexe.save
     @custservvisit = Custservvisit.new(params[:custservvisit])
+    @custservvisit.workflowexe_id = @workflowexe.id
+    @custservvisit.status = get_dict("TaskBase.taskStatus",0).id
     if @custservvisit.save
-      Workflowexe.create!(:step => 1, :user_id => current_user.id)
       redirect_to root_path, :flash => { :success => "客户拜访任务已下达"}
     else  
       @title = "客户拜访任务"

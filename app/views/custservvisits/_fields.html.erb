@@ -3,6 +3,9 @@
 <%= f.input :cust_name, :label => '客户/公司名称' %>
 <%= f.input :plan_location, :label => '地址', :input_html => { :class => "input-xlarge" } %>
 <%= f.input :plan_date,  :as => :datetime_picker, :label => '时间' %>
-<%= f.input :user_id, :collection => User.valid_user.accessible_by(current_ability),
-						:label => '负责营销人员' %>
+<%= f.input :user_id, as: :hidden, input_html: { value: current_user.id } %>
+<%= f.input :user_name, disabled: true, :input_html => { value: current_user.name }, :label => '负责营销人员' %>
+<%= f.input :assit_user_id, :collection => User.valid_user.accessible_by(current_ability),
+						:label => '协同人员(如有)' %>
+<%= f.input :visit_content, as: :text, :input_html => { :class => "input-xlarge", :rows => '4' }, :label => '内容' %>
 </fieldset>

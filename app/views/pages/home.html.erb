@@ -1,12 +1,23 @@
 <% if signed_in? %>
-	<div class="hero-unit">
-		<div class="page-header" data-spy="scroll">
-		<h1>欢迎您, <%= current_user.name %></h1>
+	<div class="row-fluid">
+		<div class="span9 well">
+			
 		</div>
-			<p>公告：营销综合管理视图ver.1657是为特定客户所开发的业务快速访问通道。通过该项目，能够使得销售交易总部及辖属分支机构执行者直观、快速地接触到逐级管理对象的最新业务进展。也能够帮助各级管理者把握和分析历史情况，从而对新的管理部署做出调整而设计的数据反馈及决策支持系统。拥有低成本、高可靠性和易用性的显著特点。在该项目的基础上，还能够实现对外围系统的准入认证、数据封装对接功能，可以有效减少信息系统开发及运行维护的压力，帮助客户专注业务创新和管理创新。以轻量化和网络化体系构建业务和管理信息资源，达成“数据即服务”的目标。</p>
-			</br>
+		<div class="span3 well">
+			<ul class="thumbnails inline">
+			  <li class="span4">
+			    <div class="thumbnail">
+						<%= image_tag("rails.png", :alt => "营销综合管理") %>
+			    </div>
+			  </li>
+				<li><h4>湖美景-美剧美剧</h4></li>
+			</ul>
+			<ul>
+				<li>姓名</li>
+				<li>声卡</li>
+			</ul>
+		</div>
 	</div>
-
 <% else %>
 
 <div class="hero-unit">

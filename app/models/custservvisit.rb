@@ -1,13 +1,39 @@
 class Custservvisit < ActiveRecord::Base
-  attr_accessor   :capital_account
-  attr_accessible :assit_user_id, :attchment_file, :cust_id, :location, :memo, :plan_date, :status,
+  attr_accessor   :user_name
+  attr_accessible :assit_user_id, :attchment_file, :location, :memo, :plan_date, :status,
                   :user_id, :visit_content, :visit_date, :workflowexe_id, :capital_account, :cust_name, 
                   :plan_location
                   
   belongs_to :workflowexe
+  
+  attr_writer :capital_account
+  
+  validate :check_capital_account
+  
+  before_save :save_capital_account
+  
+  validates :user_id,  :presence => true
+  
+  def capital_account
+    @capital_account || Cust.find(cust_id).capital_account if cust_id.present?
+  end
+  
+  def save_capital_account
+    self.cust_id = Cust.find_by_capital_account(capital_account).id if capital_account.present?
+  end
+  
+  def check_capital_account
+    if @capital_account.present? && Cust.find_by_capital_account(capital_account).nil?
+      errors.add :capital_account, "该客户不存在，或不属于团队客户"
+    end
+  rescue ArgumentError
+    errors.add :capital_account, "资金账号有误"
+  end
+  
 end
 # == Schema Information
-#
+# 
+# 
 # Table name: custservvisits
 #
 #  id             :integer(38)     not null, primary key
