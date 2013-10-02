@@ -1,21 +1,10 @@
-<% if signed_in? %>
+<% if (signed_in?) && (can? :access_user_first_page, :all) %>
 	<div class="row-fluid">
 		<div class="span9 well">
 			
 		</div>
 		<div class="span3 well">
-			<ul class="thumbnails inline">
-			  <li class="span4">
-			    <div class="thumbnail">
-						<%= image_tag("rails.png", :alt => "营销综合管理") %>
-			    </div>
-			  </li>
-				<li><h4>湖美景-美剧美剧</h4></li>
-			</ul>
-			<ul>
-				<li>姓名</li>
-				<li>声卡</li>
-			</ul>
+			<%= render 'brokers/sidebar_broker' %>
 		</div>
 	</div>
 <% else %>

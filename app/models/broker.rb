@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Broker < ActiveRecord::Base
   belongs_to :branch
+  belongs_to :user
+  
   has_many :brokerindices
   has_many :brokerrels, :dependent => :destroy,
                         :foreign_key => "rel_broker_id"

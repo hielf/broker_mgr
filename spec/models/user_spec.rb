@@ -184,5 +184,7 @@ end
 #  usercode           :string(255)
 #  branch_id          :integer(38)
 #  department_id      :integer(38)
+#  status             :integer(38)
+#  user_type          :integer(38)
 #
 

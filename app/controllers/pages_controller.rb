@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     if signed_in?
       @title = "首页"
     end
+    @broker = Broker.find_by_user_id(current_user.id)
   end
 
   def contact
