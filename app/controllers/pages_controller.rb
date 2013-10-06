@@ -4,8 +4,9 @@ class PagesController < ApplicationController
     @title = "首页"
     if signed_in?
       @title = "首页"
+      @broker = Broker.find_by_user_id(current_user.id) unless Broker.find_by_user_id(current_user.id).nil?
     end
-    @broker = Broker.find_by_user_id(current_user.id)
+    
   end
 
   def contact

@@ -1,31 +1,31 @@
 <ul class="thumbnails inline">
 	<li class="span4">
     <div class="thumbnail">
-			<%= image_tag("rails.png", :alt => "营销综合管理") %>
+			<%= avatar %>
     </div>
   </li>
 	<li>
-		  <h4>湖美景</h4>
-		  <p class="muted">二级</p>
+		  <h4><%= @broker.broker_name %></h4>
+		  <p class="muted"><%= get_dict_by_id(@broker.broker_level).name %></p>
 	</li>
 </ul>
 <ul class="inline">
 	<li><strong>代码：</strong></li>
-	<li></li><br/>
+	<li><%= @broker.broker_code %></li><br/>
 	<li><strong>状态：</strong></li>
-	<li></li><br/>
+	<li><%= get_dict_by_id(@broker.broker_status).name %></li><br/>
 	<li><strong>年龄：</strong></li>
-	<li></li><br/>
+	<li><%= @broker.age.to_s %></li><br/>
 	<li><strong>性别：</strong></li>
-	<li></li><br/>
+	<li><%= get_dict_by_id(@broker.gender).name %></li><br/>
 	<li><strong>手机：</strong></li>
-	<li></li><br/>
+	<li><%= @broker.mobile %></li><br/>
 	<li><strong>邮箱：</strong></li>
-	<li></li><br/>
+	<li><%= mail_to @broker.email %></li><br/>
 </ul>
 <ul class="common-divider"></ul>
 <!-- <ul class="inline"> -->
-<% if User.find(@broker.user_id) == currnet_user %>
-	<p class="text-center"><%= link_to '新建工作', workflows_path, :class => 'btn btn-success' %></p>
-<% end %>
+<% #if User.find(@broker.user_id) == currnet_user %>
+	<p class="text-center"><%= link_to '新建工作', new_workflowex_path, :class => 'btn btn-success' %></p>
+<% #end %>
 <!-- </ul> -->

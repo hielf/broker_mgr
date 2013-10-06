@@ -1,5 +1,6 @@
 class Dict < ActiveRecord::Base
   # attr_accessible :code, :dict_type, :name
+
 end
 # == Schema Information
 #

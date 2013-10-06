@@ -8,20 +8,27 @@ class Ability
     
     if user.has_role? :系统管理员
       can :manage, :all
-      # can :access_user_first_page, :all
+      can :access_user_first_page, :all
+      cannot :access_broker_first_page, :all
     elsif user.has_role? :营业部管理
+      can :access_user_first_page, :all
       can :read, Branch, :id => user.branch_id
       can :read, User,   :branch_id => user.branch_id
       can :read, Broker, :branch_id => user.branch_id
       can :crud, Custservvisit
+      
     elsif user.has_role? :分公司管理
+      can :access_user_first_page, :all
       can :read, Department, :id => user.department_id
       can :read, Branch, :department_id => user.department_id
       can :read, User,   :department_id => user.department_id
       can :crud, Custservvisit
+      
     elsif user.has_role? :营销人员
+      can :access_broker_first_page, :all
       can :read, Branch, :id => user.branch_id
-      can :access_user_first_page, :all
+      can :read, User,   :id => user.id
+      can :update, User, :id => user.id
     else
       # can :read, :all
     end
