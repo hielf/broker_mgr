@@ -3,14 +3,14 @@
 		<div class="span9 well">
 			<br/><br/><br/><br/>
 		</div>
-		<div class="span3 well">
+		<div class="span3">
 			<%= render 'brokers/sidebar_broker' %>
+			<%= render 'workflowexes/sidebar_workflowexes' %>
 		</div>
 	</div>
 <% elsif (signed_in?) && (can? :access_user_first_page, :all) %>
 Yes admin!
 <% else %>
-
 <div class="hero-unit">
 	<div class="page-header">
 	<h1>欢迎您</h1>
@@ -22,5 +22,4 @@ Yes admin!
 			 <%= link_to "获取帮助", about_path, :class => "btn btn-large btn-block" %>
 		</p>
 	</div>
-
 <% end %>

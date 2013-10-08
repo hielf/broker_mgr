@@ -4,7 +4,7 @@
 
 <%= f.simple_fields_for :custservvisit do |p| %>
 	<fieldset>
-	<%= f.input :status, as: :hidden, input_html: { value: get_dict("TaskBase.taskStatus",0).id } %>
+	<%= p.input :status, as: :hidden, input_html: { value: get_dict("TaskBase.taskStatus",0).id } %>
 	<%= p.input :capital_account, :label => "资金账号" %>
 	<%= p.input :cust_name, :label => '客户/公司名称' %>
 	<%= p.input :plan_location, :label => '地址', :input_html => { :class => "input-xlarge" } %>

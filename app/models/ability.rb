@@ -29,6 +29,7 @@ class Ability
       can :read, Branch, :id => user.branch_id
       can :read, User,   :id => user.id
       can :update, User, :id => user.id
+      can :crud, Custservvisit
     else
       # can :read, :all
     end
