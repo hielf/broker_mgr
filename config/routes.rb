@@ -5,7 +5,7 @@ Cmwp::Application.routes.draw do
   resources :roles
   resources :userpositions
   resources :workflows
-  resources :workflowexes do
+  resources :workflowunderways do
     resources :custservvisits
   end
   resources :custservvisits

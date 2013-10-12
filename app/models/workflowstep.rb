@@ -1,5 +1,5 @@
 class Workflowstep < ActiveRecord::Base
-  attr_accessible :memo, :step, :userposition_id, :workflow_id
+  attr_accessible :memo, :step, :userposition_id, :workflow_id, :name
   
   belongs_to :userposition
   belongs_to :workflow

@@ -1,0 +1,4 @@
+<blockquote>
+  <p><%= link_to Workflow.find(workflowunderway.workflow_id).name, workflowunderway_path(workflowunderway) %> <%= workflowunderway.custservvisit.cust_name %></p>
+  <small><%= workflowunderway.custservvisit.plan_date.to_s(:db) %></small>
+</blockquote>

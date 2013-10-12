@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     if signed_in?
       @title = "首页"
       @broker = Broker.find_by_user_id(current_user.id) unless Broker.find_by_user_id(current_user.id).nil?
-      @workflowexes = Workflowexe.find_by_user_id(current_user.id) unless Workflowexe.find_by_user_id(current_user.id).nil?
+      @workflowunderways = Workflowunderway.find_by_user_id(current_user.id)
     end
     
   end
