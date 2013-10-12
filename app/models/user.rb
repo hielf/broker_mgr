@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   belongs_to :branch
   belongs_to :department
   
+  has_many :sessions
   has_many :assignments
   has_many :roles, :through => :assignments
   has_many :userpositionrels, :dependent => :destroy, 

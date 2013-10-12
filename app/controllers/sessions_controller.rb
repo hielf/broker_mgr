@@ -13,6 +13,8 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
+      @session = Session.new({:user_id => user.id, :login_type => 1})
+      @session.save
       redirect_back_or root_path #user #friendly redirect
     end
   end

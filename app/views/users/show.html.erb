@@ -12,7 +12,12 @@
 					<p><%= @user.email %></p>
 			    </div>
 			    <div class="tab-pane" id="2">
-			      <!-- <p>这里是其他资料</p> -->
+				<!-- .paginate(:page => params[:page]).per_page(20) -->
+			      <% @user.sessions.find(:all, :order => "created_at desc", :limit => 10).each do |s| %>
+			      	<div class="well well-small">
+			      		前台登录： <%= s.created_at %>
+			      	</div>
+			      <% end %>
 			    </div>
 			  </div>
 			</div>
@@ -40,7 +45,7 @@
 		<div class="alert alert-block">
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
 		  <h4>帮助</h4>
-		  用户资料与人力资源部同步，无需自行修改。
+		  用户资料与人力资源部同步，无需自行修改，用户权限由销售交易总部分配。
 		</div>
 	</div>
 </div>
