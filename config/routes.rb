@@ -6,9 +6,9 @@ Cmwp::Application.routes.draw do
   resources :userpositions
   resources :workflows
   resources :workflowunderways do
-    resources :custservvisits
+    resources :workflow_steps, :custservvisits
   end
-  resources :custservvisits
+  # resources :workflow_steps
   resources :sessions, :only => [:new, :create, :destroy]
   resources :departments, :only => [:index, :show] do
     resources :deptindices do

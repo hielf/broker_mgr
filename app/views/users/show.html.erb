@@ -12,7 +12,6 @@
 					<p><%= @user.email %></p>
 			    </div>
 			    <div class="tab-pane" id="2">
-				<!-- .paginate(:page => params[:page]).per_page(20) -->
 			      <% @user.sessions.find(:all, :order => "created_at desc", :limit => 10).each do |s| %>
 			      	<div class="well well-small">
 			      		前台登录： <%= s.created_at %>
@@ -26,15 +25,14 @@
 	<div class="span3">
 		<div class="well">
 			<h4><%= @user.name %></h4>
+			<p class="muted"><strong><%= @user.usercode %></strong></p>
 			<ul class="common-divider"></ul>
 			<ul class="inline">
-				<li><strong>工号：</strong></li>
-				<li><%= @user.usercode %></li><br/>
 				<% if !@user.department_id.nil? %>
 				<li><strong>分公司：</strong></li>
 				<li><%= Department.find(@user.department_id).name %></li><br/>
 				<% end %>
-				<% if !@user.branch_id.nil? %>
+				<% if !Branch.find_by_id(@user.branch_id).nil? %>
 				<li><strong>营业部：</strong></li>
 				<li><%= Branch.find(@user.branch_id).name %></li><br/>
 				<% end %>

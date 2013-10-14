@@ -1,8 +1,9 @@
 class WorkflowunderwaysController < ApplicationController
-  include Wicked::Wizard
+  # include Wicked::Wizard
   load_and_authorize_resource
-  prepend_before_filter :set_steps
-  steps :custserv_1, :custserv_2
+  before_filter :authenticate
+  # prepend_before_filter :set_steps
+  # steps :custserv_1, :custserv_2
   
   def new
     @workflowunderway = Workflowunderway.new
@@ -35,12 +36,12 @@ class WorkflowunderwaysController < ApplicationController
     
   end
   
-  private
-  def set_steps
-    if params[:flow] == "营销客户拜访"
-      self.steps = [:custserv_1, :custserv_2]
-    elsif params[:flow] == "facebook"
-      self.steps = [:ask_facebook, :ask_email]
-    end
-  end
+  # private
+  # def set_steps
+  #   if params[:flow] == "营销客户拜访"
+  #     self.steps = [:custserv_1, :custserv_2]
+  #   elsif params[:flow] == "facebook"
+  #     self.steps = [:ask_facebook, :ask_email]
+  #   end
+  # end
 end

@@ -1,10 +1,20 @@
 class CustservvisitsController < ApplicationController
+  # include Wicked::Wizard
   load_and_authorize_resource
   before_filter :authenticate
+  
+  steps :custserv_one, :custserv_two
   
   def new
     @custservvisit  = Custservvisit.new
     @title = "客户拜访任务"
+  end
+  
+  def show
+    @title = "客户拜访任务"
+    # @current_step = :custserv_one
+    # @next_step = :custserv_two
+    # render_wizard
   end
   
   def create
