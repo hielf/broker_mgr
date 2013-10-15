@@ -1,11 +1,7 @@
-<%= @workflowunderway %> 
-
-<%= link_to '跳过', next_wizard_path, :class => 'btn' %>
-
 <div class="row-fluid">
 	<div class="span9">
 		<div class="well">
-			
+			<%= render 'custservvisits/fields_exe' %>
 		</div>
 	</div>
 	<div class="span3">
@@ -13,7 +9,8 @@
 			<% @workflow.workflowsteps.each do |n| %>
 				<div class="row-fluid">
 					<div class="span12">
-						<div class="well" style="background-color: #dff0d8;">
+						<div class="well" style="color:#468847; background-color: #dff0d8;">
+							<!-- "color:#b94a48; background-color: #f2dede;" -->
 						  <strong><p class="text-center"><%= n.name %></p></strong>
 						</div>
 					</div>
@@ -26,7 +23,7 @@
 			<% end %>
 			<div class="row-fluid">
 				<div class="span12">
-					<div class="well" style="background-color: #dff0d8;">
+					<div class="well" style="color:#468847; background-color: #dff0d8;">
 					  <strong><p class="text-center">完成</p></strong>
 					</div>
 				</div>

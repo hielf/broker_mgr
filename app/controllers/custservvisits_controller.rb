@@ -7,11 +7,11 @@ class CustservvisitsController < ApplicationController
   
   def new
     @custservvisit  = Custservvisit.new
-    @title = "客户拜访任务"
+    @title = "营销工作任务"
   end
   
   def show
-    @title = "客户拜访任务"
+    @title = "营销工作任务"
     # @current_step = :custserv_one
     # @next_step = :custserv_two
     # render_wizard
@@ -25,30 +25,30 @@ class CustservvisitsController < ApplicationController
     @custservvisit.workflowexe_id = @workflowexe.id
     @custservvisit.status = get_dict("TaskBase.taskStatus",0).id
     if @custservvisit.save
-      redirect_to root_path, :flash => { :success => "客户拜访任务已下达"}
+      redirect_to root_path, :flash => { :success => "营销工作任务已下达"}
     else  
-      @title = "客户拜访任务"
+      @title = "营销工作任务"
       render 'new'
     end
   end
 
   def edit
     @custservvisit  = Custservvisit.find(params[:id])
-    @title = "客户拜访任务"
+    @title = "营销工作任务"
   end
   
   def update
     @custservvisit  = Custservvisit.find(params[:id])
     if @custservvisit.update_attributes(params[:custservvisit])
-      redirect_to @custservvisit, :flash => { :success => "客户拜访任务提交成功" }
+      redirect_to @custservvisit, :flash => { :success => "营销工作任务提交成功" }
     else  
-      @title = "客户拜访任务"
+      @title = "营销工作任务"
       render 'edit'
     end 
   end
     
   def destroy
     Custservvisit.find(params[:id]).destroy
-    redirect_to root_path, :flash => { :success => "客户拜访任务已取消" }
+    redirect_to root_path, :flash => { :success => "营销工作任务已取消" }
   end
 end

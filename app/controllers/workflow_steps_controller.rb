@@ -3,10 +3,10 @@ class WorkflowStepsController < ApplicationController
   # load_and_authorize_resource
   before_filter :authenticate
   # prepend_before_filter :set_steps
-  steps :custserv_one, :custserv_two
+  steps :custserv_exe
   
   def show
-    @title = "客户拜访任务"
+    @title = "营销工作任务"
     @workflowunderway = Workflowunderway.find(params[:workflowunderway_id])
     @workflow = @workflowunderway.workflow
     

@@ -8,7 +8,6 @@ end
 # Table name: custservvisits
 #
 #  id                  :integer(38)     not null, primary key
-#  workflowexe_id      :integer(38)
 #  cust_id             :integer(38)
 #  cust_name           :string(255)
 #  plan_location       :string(255)

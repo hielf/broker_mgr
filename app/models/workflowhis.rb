@@ -1,5 +1,5 @@
 class Workflowhis < ActiveRecord::Base
-  attr_accessible :content, :workflow_id, :remark, :user_id
+  attr_accessible :content, :workflow_id, :remark, :user_id, :id
 end
 # == Schema Information
 #

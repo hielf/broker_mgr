@@ -15,30 +15,58 @@ class WorkflowunderwaysController < ApplicationController
     @title = "流程步骤"
     @workflowunderway = Workflowunderway.find(params[:id])
     @workflow = @workflowunderway.workflow
-    @next_step = 'custserv_2'
-    @current_step = 'custserv_1'
+    # @next_step = 'custserv_2'
+    # @current_step = 'custserv_1'
     # current_step = 1
     # render_wizard
+  end
+  
+  def edit
+    @workflowunderway  = Workflowunderway.find(params[:id])
+    @title = "修改"
   end
   
   def create
     @workflowunderway = Workflowunderway.new(params[:workflowunderway])
     # @custservvisit.status = get_dict("TaskBase.taskStatus",0).id
     if @workflowunderway.save
-      redirect_to root_path, :flash => { :success => "客户拜访任务已下达"}
+      redirect_to root_path, :flash => { :success => "营销工作任务已设置"}
     else  
-      @title = "客户拜访任务"
+      @title = "营销工作任务"
       render 'new'
     end
   end
   
   def update
-    
+    @workflowunderway  = Workflowunderway.find(params[:id])
+    if @workflowunderway.update_attributes(params[:workflowunderway])
+      if last_step(@workflowunderway)
+        redirect_to root_path, :flash => { :success => "提交成功" }
+      else
+        redirect_to @workflowunderway, :flash => { :success => "提交成功" }
+      end
+    else  
+      @title = "营销工作任务"
+      render 'edit'
+    end
   end
   
-  # private
+  private
+  def last_step(workflowunderway)
+    laststep = workflowunderway.workflow.steps
+    if workflowunderway.step == laststep
+      @workflowhis = Workflowhis.new({:content => params[:workflowunderway][:content],
+                    :remark => params[:workflowunderway][:remark],
+                    :workflow_id => params[:workflowunderway][:workflow_id],
+                    :user_id => params[:workflowunderway][:user_id],
+                    :id => workflowunderway.id})
+      if @workflowhis.save
+        workflowunderway.destroy
+      end
+    end
+  end
   # def set_steps
-  #   if params[:flow] == "营销客户拜访"
+  #   if params[:flow] == "营销工作任务"
   #     self.steps = [:custserv_1, :custserv_2]
   #   elsif params[:flow] == "facebook"
   #     self.steps = [:ask_facebook, :ask_email]
