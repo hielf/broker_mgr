@@ -1,7 +1,11 @@
-<div>
+<div class="well">
 	<ul class="unstyled">
 		<% if !Workflowunderway.find_by_user_id(current_user.id).nil? %>
 			<%= render @workflowunderways %>
 		<% end %>
 	</ul>
+	<ul class="common-divider"></ul>
+	<div>
+		<p class="text-center"><%= link_to '所有待办工作', workflowunderways_path, :class => 'btn' %></p>
+	</div>
 </div>
