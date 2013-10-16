@@ -2,10 +2,15 @@
 	<ul class="unstyled">
 		<% if !Workflowunderway.find_by_user_id(current_user.id).nil? %>
 			<%= render @workflowunderways %>
+		<% else %>
+			<li><p class="text-center muted">目前没有待办事项</p></li>
 		<% end %>
 	</ul>
 	<ul class="common-divider"></ul>
 	<div>
-		<p class="text-center"><%= link_to '所有待办工作', workflowunderways_path, :class => 'btn' %></p>
+		<p class="text-center">
+			<%= link_to '全部待办', workflowunderways_path, :class => 'btn btn-primary' %>
+			<%= link_to '历史工作', workflowhises_path, :class => 'btn' %>
+		</p>
 	</div>
 </div>

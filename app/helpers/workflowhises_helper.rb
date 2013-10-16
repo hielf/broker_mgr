@@ -1,0 +1,2 @@
+module WorkflowhisesHelper
+end

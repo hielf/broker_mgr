@@ -38,14 +38,14 @@ class UsersController < ApplicationController
   
   def create
     # raise params[:user].inspect
-    @user = User.new(params[:user])
-    if @user.save
-      sign_in @user
-      redirect_to @user, :flash => { :success => "欢迎注册"}
-    else  
-      @title = "注册"
-      render 'new'
-    end
+    # @user = User.new(params[:user])
+    # if @user.save
+    #   sign_in @user
+    #   redirect_to @user, :flash => { :success => "欢迎注册"}
+    # else  
+    #   @title = "注册"
+    #   render 'new'
+    # end
   end
 
   def edit
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
     if @assignments.present?
        @user.update_attribute :role_ids, params[:user][:role_ids]
        @user.update_attribute :userposition_ids, params[:user][:userposition_ids]
-        redirect_to @user, :flash => { :success => "用户设置成功" }
+        redirect_to users_path, :flash => { :success => "用户设置成功" }
     elsif @department.present?
        @user.update_attribute :department_id, params[:user][:department_id]
         redirect_to @user, :flash => { :success => "用户所辖分公司设置成功" }

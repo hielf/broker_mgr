@@ -23,22 +23,7 @@
 		</div>
 	</div>
 	<div class="span3">
-		<div class="well">
-			<h4><%= @user.name %></h4>
-			<p class="muted"><strong><%= @user.usercode %></strong></p>
-			<ul class="common-divider"></ul>
-			<ul class="inline">
-				<% if !@user.department_id.nil? %>
-				<li><strong>分公司：</strong></li>
-				<li><%= Department.find(@user.department_id).name %></li><br/>
-				<% end %>
-				<% if !Branch.find_by_id(@user.branch_id).nil? %>
-				<li><strong>营业部：</strong></li>
-				<li><%= Branch.find(@user.branch_id).name %></li><br/>
-				<% end %>
-			</ul>
-			<ul class="common-divider"></ul>
-		</div>
+		<%= render 'sidebar_user'%>
 		
 		<div class="alert alert-block">
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
