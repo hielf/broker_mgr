@@ -59,7 +59,8 @@ class WorkflowunderwaysController < ApplicationController
       if last_step(@workflowunderway)
         redirect_to root_path, :flash => { :success => "提交成功" }
       else
-        redirect_to @workflowunderway, :flash => { :success => "提交成功" }
+        redirect_to workflowunderway_workflow_step_path(@workflowunderway, current_step(@workflowunderway)), 
+                    :flash => { :success => "提交成功" }
       end
     else  
       @title = "营销工作任务"

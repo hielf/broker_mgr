@@ -20,11 +20,11 @@ class Custservvisit < ActiveRecord::Base
   end
   
   def save_capital_account
-    self.cust_id = Cust.find_by_capital_account(capital_account).id if capital_account.present?
+    self.cust_id = Cust.find_by_capital_account(@capital_account).id if @capital_account.present?
   end
   
   def check_capital_account
-    if @capital_account.present? && Cust.find_by_capital_account(capital_account).nil?
+    if @capital_account.present? && Cust.find_by_capital_account(@capital_account).nil?
       errors.add :capital_account, "该客户不存在，或不属于团队客户"
     end
   rescue ArgumentError

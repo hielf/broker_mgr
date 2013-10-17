@@ -34,6 +34,7 @@ class Ability
       can :crud, Custservvisit
       can :crud, Workflowunderway
       can :read, Workflowhistory
+      can :read, Cust
     else
       # can :read, :all
     end

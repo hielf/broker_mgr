@@ -19,7 +19,7 @@
 	
 	if can? :read, Workflowunderway
 	  g.column do |workflowunderway|
-	    link_to('详情', workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway)))
+	    link_to('执行', workflowunderway_workflow_step_path(workflowunderway, current_step(workflowunderway)))
 	  end
   end
 end -%>
