@@ -6,6 +6,7 @@ class Workflow < ActiveRecord::Base
   has_many :workflowsteps, :dependent => :destroy
   has_many :userpositions, :through => :workflowsteps
   has_many :workflowunderways
+  has_many :workflowhistories
   
   accepts_nested_attributes_for :workflowsteps
                               

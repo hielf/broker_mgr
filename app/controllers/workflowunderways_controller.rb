@@ -71,12 +71,12 @@ class WorkflowunderwaysController < ApplicationController
   def last_step(workflowunderway)
     laststep = workflowunderway.workflow.steps
     if workflowunderway.step == laststep
-      @workflowhis = Workflowhis.new({:content => params[:workflowunderway][:content],
-                    :remark => params[:workflowunderway][:remark],
-                    :workflow_id => params[:workflowunderway][:workflow_id],
-                    :user_id => params[:workflowunderway][:user_id],
-                    :id => workflowunderway.id})
-      if @workflowhis.save
+      @workflowhistory = Workflowhistory.new({:content => params[:workflowunderway][:content],
+                      :remark => params[:workflowunderway][:remark],
+                      :workflow_id => params[:workflowunderway][:workflow_id],
+                      :user_id => params[:workflowunderway][:user_id],
+                      :id => workflowunderway.id})
+      if @workflowhistory.save
         workflowunderway.destroy
       end
     end

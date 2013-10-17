@@ -16,6 +16,7 @@ class Ability
       can :read, User,   :branch_id => user.branch_id
       can :read, Broker, :branch_id => user.branch_id
       can :crud, Custservvisit
+      can :read, Workflowhistory
       
     elsif user.has_role? :分公司管理
       can :access_user_first_page, :all
@@ -23,6 +24,7 @@ class Ability
       can :read, Branch, :department_id => user.department_id
       can :read, User,   :department_id => user.department_id
       can :crud, Custservvisit
+      can :read, Workflowhistory
       
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all
@@ -31,6 +33,7 @@ class Ability
       can :update, User, :id => user.id
       can :crud, Custservvisit
       can :crud, Workflowunderway
+      can :read, Workflowhistory
     else
       # can :read, :all
     end
