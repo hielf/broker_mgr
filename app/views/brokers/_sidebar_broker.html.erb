@@ -6,11 +6,13 @@
 	    </div>
 	  </li>
 		<li>
-			  <h4><%= @broker.broker_name %></h4>
-			  <p class="muted"><%= get_dict_by_id(@broker.broker_level).name %></p>
+			<h4><%= @broker.broker_name %></h4>
+			<p class="muted"><%= get_dict_by_id(@broker.broker_level).name %></p>
 		</li>
 	</ul>
 	<ul class="inline">
+		<li><strong>所属：</strong></li>
+		<li><%= Branch.find(@broker.branch_id).name %></li><br/>
 		<li><strong>代码：</strong></li>
 		<li><%= @broker.broker_code %></li><br/>
 		<li><strong>状态：</strong></li>

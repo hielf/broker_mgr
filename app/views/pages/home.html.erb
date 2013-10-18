@@ -1,7 +1,8 @@
 <% if (signed_in?) && (can? :access_broker_first_page, :all) %>
 	<div class="row-fluid">
 		<div class="span9 well">
-			<br/><br/><br/><br/>
+			客户情况 营销产品<br/>绩效考核<br/>薪酬<br/><br/>
+			<%= render 'brokers/custs/brokercusts' %>
 		</div>
 		<div class="span3">
 			<%= render 'brokers/sidebar_broker' %>
