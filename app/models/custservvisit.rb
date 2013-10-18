@@ -5,6 +5,7 @@ class Custservvisit < ActiveRecord::Base
                   :plan_location, :visit_location
                   
   belongs_to :workflowunderway
+  belongs_to :workflowhistory
   
   attr_writer :capital_account
   

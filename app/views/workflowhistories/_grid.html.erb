@@ -19,7 +19,7 @@
 	
 	if can? :read, Workflowhistory
 	  g.column do |workflowhistory|
-	    link_to('详情', '#')
+			link_to('详情', workflowhistory_path(workflowhistory))
 	  end
   end
 end -%>

@@ -3,7 +3,7 @@ class WorkflowhistoriesController < ApplicationController
   before_filter :authenticate
   
   def index
-    @title = "待办列表"
+    @title = "已办列表"
     @workflowhistories = Workflowhistory.order("code").paginate(:page => params[:page]).per_page(20)
     # @department = params[:department]
     @workflowhistories_grid = initialize_grid(Workflowhistory, 
@@ -15,5 +15,11 @@ class WorkflowhistoriesController < ApplicationController
               :csv_file_name => '导出',
               :per_page => 20)
     # export_grid_if_requested('workflowunderways' => 'grid')
+  end
+  
+  def show
+    @title = "流程步骤"
+    @workflowhistory = Workflowhistory.find(params[:id])
+    @workflow = @workflowhistory.workflow
   end
 end
