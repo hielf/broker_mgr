@@ -9,6 +9,8 @@ class Broker < ActiveRecord::Base
   has_many :relbrokers, :through => :brokerrels, :source => :broker
   has_many :custbrokerrels
   has_many :custs, :through => :custbrokerrels
+  has_many :brokerproductrels
+  has_many :products, :through => :brokerproductrels
   
   default_scope :order => 'brokers.broker_code'
   

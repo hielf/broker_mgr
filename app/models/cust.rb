@@ -3,7 +3,8 @@ class Cust < ActiveRecord::Base
                   :cust_name, :identification_number, :identification_type, :mobile, :open_date, :phone, :status,
                   :valid_date, :valid_date_crop, :zip_code
   
-  has_many :custbrokerrels
+  belongs_to :branch
+  has_many   :custbrokerrels
   
   def is_cust?(cust_sym)
     self.any? { |c| c.capital_account == cust_sym }

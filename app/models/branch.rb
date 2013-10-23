@@ -20,6 +20,7 @@ class Branch < ActiveRecord::Base
   has_many :users
   has_many :brokers
   has_many :branchindices
+  has_many :custs
   
   default_scope   :order => 'branches.code' 
   

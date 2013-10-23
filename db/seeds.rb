@@ -2208,3 +2208,14 @@ Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7650,:name=>'保证金�
 Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7651,:name=>'市值类',:dict_type=>'IndicatorBase.IndicatorType',:code=>50}, :without_protection => true)
 Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7652,:name=>'资产类',:dict_type=>'IndicatorBase.IndicatorType',:code=>60}, :without_protection => true)
 Dict.find_or_create_by_name_and_dict_type_and_code({:id=>7653,:name=>'客户类',:dict_type=>'IndicatorBase.IndicatorType',:code=>70}, :without_protection => true)
+
+#new added
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'低',:dict_type=>'Product.RiskLevel',:code=>1})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'中低',:dict_type=>'Product.RiskLevel',:code=>2})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'中',:dict_type=>'Product.RiskLevel',:code=>3})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'中高',:dict_type=>'Product.RiskLevel',:code=>4})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'高',:dict_type=>'Product.RiskLevel',:code=>5})
+
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'发行期',:dict_type=>'Product.status',:code=>1})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'存续期',:dict_type=>'Product.status',:code=>2})
+Dict.find_or_create_by_name_and_dict_type_and_code({:name=>'到期结束',:dict_type=>'Product.status',:code=>3})

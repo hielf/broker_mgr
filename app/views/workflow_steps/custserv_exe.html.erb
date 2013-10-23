@@ -1,37 +1,10 @@
 <div class="row-fluid">
-	<div class="span9">
+	<div class="span6">
 		<div class="well">
 			<%= render 'custservvisits/fields_exe' %>
 		</div>
 	</div>
 	<div class="span3">
-		<div class="well">
-			<% @workflow.workflowsteps.each do |n| %>
-				<div class="row-fluid">
-					<div class="span12">
-						<% if n.step == 2 && n.workflow.code == "1001" %>
-							<div class="well" style="color:#b94a48; background-color: #f2dede;">
-						<% else %>
-							<div class="well" style="color:#468847; background-color: #dff0d8;">
-						<% end %>
-						  <strong><p class="text-center"><%= n.name %></p></strong>
-						</div>
-					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="span12">
-						<p class="text-center"><i class="icon-arrow-down"></i></p>
-					</div>
-				</div>
-			<% end %>
-			<div class="row-fluid">
-				<div class="span12">
-					<div class="well" style="color:#c09853; background-color: #fcf8e3;">
-					  <strong><p class="text-center">完成</p></strong>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="alert alert-block">
 		  <button type="button" class="close" data-dismiss="alert">&times;</button>
 			<table class="table table-bordered table-condensed">
@@ -63,10 +36,39 @@
 						<td colspan="2"><p class="text-center"><strong>内容</strong></p></td>
 					</tr>
 					<tr>
-						<td><%= @workflowunderway.custservvisit.visit_content if @workflowunderway.custservvisit.visit_content %></td>
-						</tr>
+						<td colspan="2"><%= @workflowunderway.custservvisit.visit_content if @workflowunderway.custservvisit.visit_content %></td>
+					</tr>
 				 </tbody>
 			</table>
+		</div>
+	</div>
+	<div class="span3">
+		<div class="well">
+			<% @workflow.workflowsteps.each do |n| %>
+				<div class="row-fluid">
+					<div class="span12">
+						<% if n.step == 2 && n.workflow.code == "1001" %>
+							<div class="well" style="color:#b94a48; background-color: #f2dede;">
+						<% else %>
+							<div class="well" style="color:#468847; background-color: #dff0d8;">
+						<% end %>
+						  <strong><p class="text-center"><%= n.name %></p></strong>
+						</div>
+					</div>
+				</div>
+				<div class="row-fluid">
+					<div class="span12">
+						<p class="text-center"><i class="icon-arrow-down"></i></p>
+					</div>
+				</div>
+			<% end %>
+			<div class="row-fluid">
+				<div class="span12">
+					<div class="well" style="color:#c09853; background-color: #fcf8e3;">
+					  <strong><p class="text-center">完成</p></strong>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

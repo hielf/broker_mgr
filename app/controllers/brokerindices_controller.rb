@@ -9,6 +9,7 @@ class BrokerindicesController < ApplicationController
   private
   
   def getbrokerindex(broker, type)
-    @brokerindex = Brokerindex.find_by_sql ["SELECT a.* FROM brokerindices a WHERE broker_id = ? and indextype = ?", broker, type]
+    @brokerindex = Brokerindex.find_by_broker_id_and_indextype(broker, type)
+    # @brokerindex = Brokerindex.find_by_sql ["SELECT a.* FROM brokerindices a WHERE broker_id = ? and indextype = ?", broker, type]
   end
 end
