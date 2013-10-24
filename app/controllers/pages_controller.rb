@@ -6,6 +6,8 @@ class PagesController < ApplicationController
       @title = "首页"
       @broker = Broker.find_by_user_id(current_user.id) unless Broker.find_by_user_id(current_user.id).nil?
       @workflowunderways = Workflowunderway.where(:user_id => current_user.id).limit(5).order('created_at desc')
+      @brokerproducts = @broker.products
+      @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
     end
     
   end
