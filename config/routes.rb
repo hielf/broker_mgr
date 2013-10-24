@@ -8,6 +8,7 @@ Cmwp::Application.routes.draw do
   resources :workflowhistories
   resources :custs
   resources :products
+  resources :brokerproductrels, :only => [:create, :destroy]
   resources :workflowunderways do
     resources :workflow_steps, :custservvisits
   end

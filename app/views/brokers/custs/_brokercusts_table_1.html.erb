@@ -9,7 +9,7 @@
   <tbody>
     <tr>
       <td>当前客户数</td>
-      <td><%= find_brokerindex(70004, @broker) %></td>
+      <td><%= find_brokerindex(70004, @broker).to_i %></td>
     </tr>
 		<tr>
       <td>存量客户总资产</td>
@@ -30,9 +30,9 @@
 		<tr>
       <td>当前有效户数</td>
 			<% if get_dict_by_id(@broker.broker_type).code == 4 %>
-      <td><%= find_brokerindex(70006, @broker) %></td>
+      <td><%= find_brokerindex(70006, @broker).to_i %></td>
 			<% else %>
-			<td><%= find_brokerindex(70005, @broker) %></td>
+			<td><%= find_brokerindex(70005, @broker).to_i %></td>
 			<% end %>
     </tr>
   </tbody>

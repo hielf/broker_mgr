@@ -14,4 +14,4 @@ jQuery ->
 			# $("#link_broker_id").val ui.item.id
 			false
 	 })	.data("autocomplete")._renderItem = (ul, item) ->
-		    $("<li></li>").data("item.autocomplete", item).append("<a>" + item.broker_code + "-" + item.broker_name + "</a>").appendTo ul 
+		    $("<li></li>").data("item.autocomplete", item).append("<a>" + item.broker_code + "-" + item.broker_name + "</a>").appendTo ul

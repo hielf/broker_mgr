@@ -40,8 +40,14 @@
 			    </tr>
 			  </tbody>
 			</table>
-			<div class="form-actions">
-				<p class="text-center"><%= link_to '返回', products_path, :class => 'btn' %></p>
+			<div class="form-actions" id="favor_form">
+					<% if user_broker(current_user) %>
+						<% if user_broker(current_user).favor?(@product) %>
+							<%= render 'unfavor' %>
+						<% else %>
+							<%= render 'favor' %>
+						<% end %>
+					<% end %>
 			</div>
 		</div>
 	</div>

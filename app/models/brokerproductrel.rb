@@ -3,4 +3,7 @@ class Brokerproductrel < ActiveRecord::Base
   
   belongs_to :broker
   belongs_to :product
+  
+  validates :broker_id, :presence => true
+  validates :product_id, :presence => true
 end

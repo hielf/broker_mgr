@@ -20,6 +20,18 @@ class Broker < ActiveRecord::Base
     "#{broker_code} | #{broker_name}"
   end
   
+  def favor?(product)
+    brokerproductrels.find_by_product_id(product)
+  end
+  
+  def favor!(product)
+    brokerproductrels.create!(:product_id => product.id)
+  end
+  
+  def unfavor!(product)
+    brokerproductrels.find_by_product_id(product).destroy
+  end
+  
   def self.search(search)
     if search
       @brokers = Broker.limit(20).find(:all,:conditions => 

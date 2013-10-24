@@ -4,4 +4,8 @@ module UsersHelper
                                                     :class => "gravatar",
                                                     :gravatar => options  )
   end
+  
+  def user_broker(user)
+    Broker.find_by_user_id(user.id)
+  end
 end
