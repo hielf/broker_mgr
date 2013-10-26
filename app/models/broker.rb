@@ -4,6 +4,7 @@ class Broker < ActiveRecord::Base
   belongs_to :user
   
   has_many :brokerindices
+  has_many :salaries
   has_many :brokerrels, :dependent => :destroy,
                         :foreign_key => "rel_broker_id"
   has_many :relbrokers, :through => :brokerrels, :source => :broker
