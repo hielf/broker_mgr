@@ -11,3 +11,5 @@
 //= require wice_grid
 //= require_tree .
 //= require bootstrap-datetimepicker
+//= require highcharts
+//= require highcharts/modules/exporting

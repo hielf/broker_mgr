@@ -21,13 +21,14 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
   gem 'jquery-ui-rails'
+  gem 'highcharts-rails', '~> 3.0.7'
 end
 
 gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.6'
 gem 'jquery-rails'
 gem 'simple_form'
-gem 'lazy_high_charts', '~> 1.1.5'
+# gem 'lazy_high_charts', '~> 1.5.0'
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
