@@ -29,6 +29,9 @@ Cmwp::Application.routes.draw do
     resources :brokerindices do
       get 'broker_index', :on => :member
     end
+    resources :salaries do
+      get 'broker_salary', :on => :member
+    end
     member do
       get :relbrokers
     end

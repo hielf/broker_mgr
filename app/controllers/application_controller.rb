@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
   include DeptindicesHelper
   include DictsHelper
   include WorkflowunderwaysHelper
+  # include SalariesHelper
   # include BrokersHelper
 end

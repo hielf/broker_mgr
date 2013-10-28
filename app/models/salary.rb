@@ -3,7 +3,8 @@ class Salary < ActiveRecord::Base
   
   belongs_to :broker
   
-  default_scope :order => 'salaries.month_id'
+  # default_scope :order => 'salaries.month_id DESC'
+  
 end
 # == Schema Information
 #
