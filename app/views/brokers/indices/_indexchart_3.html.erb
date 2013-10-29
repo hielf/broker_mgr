@@ -1,0 +1,142 @@
+<script type="text/javascript" charset="utf-8">
+$(function() {
+	showChartResult3(70004,70011,70001,70010, <%= Time.now.strftime("%Y%m") %>);
+});
+
+$('#nav-broker-point-year button').click( function(e) {
+	var selected = $(this).attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
+	showChartResult3(70004,70011,70001,70010, selected);
+	// console.log(selected);
+});
+
+$('#nav-broker-point-month button').click( function(e) {
+	var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $(this).attr('value');
+	showChartResult3(70004,70011,70001,70010, selected);
+	// console.log(selected);
+});
+
+
+function showChartResult3(i1,i2,i3,i4,m) {
+	_broker = <%= @broker.id %>
+	_url1 = '/brokers/' + _broker + '/brokerindices/' + i1 + '/broker_index.json'
+	_url2 = '/brokers/' + _broker + '/brokerindices/' + i2 + '/broker_index.json'
+	_url3 = '/brokers/' + _broker + '/brokerindices/' + i3 + '/broker_index.json'
+	_url4 = '/brokers/' + _broker + '/brokerindices/' + i4 + '/broker_index.json'
+	_width = document.getElementById("tab_page").offsetWidth;
+	// console.log(_url);
+	$.get(_url1, function (data1) {
+		$.get(_url2, function (data2) {
+			$.get(_url3, function (data3) {
+				$.get(_url4, function (data4) {
+								
+								_results1 = [];
+								_results2 = [];
+								_results3 = [];
+								_results4 = [];
+								_month = [];
+								b = null;
+								l = null;
+								for(var i in data1){   
+								if (data1[i].month == m) {
+									 b = i
+									 l = b - 5
+									}
+								}
+								if (l < 0) {
+									l = 0
+								}
+								
+									for(var i in data1){
+										if (i >= l && i <= b) {
+											_month.push(data1[i].month);
+											_results1.push(parseFloat(data1[i].total));
+										}
+									}
+									
+									for(var i in data2){
+										if (i >= l && i <= b) {
+											_results2.push(parseFloat(data2[i].total));
+										}
+									}
+									for(var i in data3){
+										if (i >= l && i <= b) {
+											_results3.push(parseFloat(data3[i].total));
+										}
+									}
+									for(var i in data4){
+										if (i >= l && i <= b) {
+											_results4.push(parseFloat(data4[i].total));
+										}
+									}
+									// console.log('_results1' + _results1 + '_results2' + _results2 + '_results3' + _results3 + '_results4' + _results4 + '_results5' + _results5 + '_results6' + _results6 + '_results7' + _results7);
+
+								$('#chart_3').highcharts({
+									title: {
+						        text: '半年内客户变动'
+						      },
+									chart: {
+										type: 'area',
+										width: _width / 2.15
+									},
+									tooltip: {
+			                shared: true,
+			                valueSuffix: ' 人'
+			            },
+									xAxis: {
+			                categories: _month,
+			                tickmarkPlacement: 'on',
+			                title: {
+			                    enabled: false
+			                }
+			            },
+									yAxis: {
+											title: {
+												text: "客户数"
+											},
+											labels: {
+						             align: 'left',
+						             x: 3,
+						             y: 16,
+						             formatter: function() {
+						                 return Highcharts.numberFormat(this.value, 0);
+						             }
+						          },
+									},
+			            plotOptions: {
+			                area: {
+			                    stacking: 'normal',
+			                    lineColor: '#666666',
+			                    lineWidth: 1,
+			                    marker: {
+			                        lineWidth: 1,
+			                        lineColor: '#666666'
+			                    }
+			                }
+			            },
+									 credits: {
+											 enabled: false
+									 },
+						       series: [{
+										name: '存量客户数',
+										data: _results1
+						       	},
+										{
+										name: '新增客户数',
+										data: _results2
+						       	},
+										{
+										name: '转有效户数',
+										data: _results3
+							      },
+										{
+										name: '流失客户数',
+										data: _results4
+								    }
+									 ]
+					});
+				});
+			});
+		});
+	});
+};
+</script>
