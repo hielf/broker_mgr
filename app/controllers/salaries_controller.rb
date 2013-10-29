@@ -8,7 +8,7 @@ class SalariesController < ApplicationController
   private
   
   def getbrokersalary(broker, type)
-    @getbrokersalary = Salary.find_all_by_broker_id_and_indextype(broker, type)
+    Salary.find_all_by_broker_id_and_indextype(broker, type)
   end
   
 end

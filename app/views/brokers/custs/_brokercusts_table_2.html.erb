@@ -9,7 +9,7 @@
   <tbody>
     <tr>
       <td>新增客户数</td>
-      <td><%= find_brokerindex(70011, @broker) %></td>
+      <td><%= find_brokerindex(70011, @broker).to_i %></td>
     </tr>
 		<tr>
       <td>增量客户期末资产</td>
@@ -26,9 +26,9 @@
 		<tr>
       <td>转有效户数</td>
 			<% if get_dict_by_id(@broker.broker_type).code == 4 %>
-      <td><%= find_brokerindex(70002, @broker) %></td>
+      <td><%= find_brokerindex(70002, @broker).to_i %></td>
 			<% else %>
-			<td><%= find_brokerindex(70001, @broker) %></td>
+			<td><%= find_brokerindex(70001, @broker).to_i %></td>
 			<% end %>
     </tr>
 		<tr>
