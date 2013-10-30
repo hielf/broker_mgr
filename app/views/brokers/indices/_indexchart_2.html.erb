@@ -1,19 +1,43 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
 	showChartResult2(10002,10003,10004,10005,10009,10010,10036, <%= Time.now.strftime("%Y%m") %>);
+	
+	$('#btn-group-chart2 button').click( function() {
+		var radio = $(this).attr('value');
+		var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
+		switch (radio) {
+		    case "1": showChartResult2(30017,30004,30005,30003,30006,30007,30021, selected);
+				break;
+		    case "2": showChartResult2(10002,10003,10004,10005,10009,10010,10036, selected);
+				break;
+		}
+	});
 });
 
 $('#nav-broker-point-year button').click( function(e) {
 	var selected = $(this).attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
-	showChartResult2(10002,10003,10004,10005,10009,10010,10036, selected);
+	var radio = $('#btn-group-chart2').find('.btn.active').attr('value')
+	switch (radio) {
+	    case "1": showChartResult2(30017,30004,30005,30003,30006,30007,30021, selected);
+			break;
+	    case "2": showChartResult2(10002,10003,10004,10005,10009,10010,10036, selected);
+			break;
+	}
 	// console.log(selected);
 });
 
 $('#nav-broker-point-month button').click( function(e) {
 	var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $(this).attr('value');
-	showChartResult2(10002,10003,10004,10005,10009,10010,10036, selected);
+	var radio = $('#btn-group-chart2').find('.btn.active').attr('value')
+	switch (radio) {
+	    case "1": showChartResult2(30017,30004,30005,30003,30006,30007,30021, selected);
+			break;
+	    case "2": showChartResult2(10002,10003,10004,10005,10009,10010,10036, selected);
+			break;
+	}
 	// console.log(selected);
 });
+
 
 
 function showChartResult2(i1,i2,i3,i4,i5,i6,i7,m) {
@@ -41,39 +65,46 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,m) {
 								_results5 = 0;
 								_results6 = 0;
 								_results7 = 0;
-								
+
 									for(var i in data1){
 										if (data1[i].month == m) {
+											name1 = data1[i].subtitle;
 											_results1 = (parseFloat(data1[i].total));
 										}
 									}
 									for(var i in data2){
 										if (data2[i].month == m) {
+											name2 = data2[i].subtitle;
 											_results2 = (parseFloat(data2[i].total));
 										}
 									}
 									for(var i in data3){
 										if (data3[i].month == m) {
+											name3 = data3[i].subtitle;
 											_results3 = (parseFloat(data3[i].total));
 										}
 									}
 									for(var i in data4){
 										if (data4[i].month == m) {
+											name4 = data4[i].subtitle;
 											_results4 = (parseFloat(data4[i].total));
 										}
 									}
 									for(var i in data5){
 										if (data5[i].month == m) {
+											name5 = data5[i].subtitle;
 											_results5 = (parseFloat(data5[i].total));
 										}
 									}
 									for(var i in data6){
 										if (data6[i].month == m) {
+											name6 = data6[i].subtitle;
 											_results6 = (parseFloat(data6[i].total));
 										}
 									}
 									for(var i in data7){
 										if (data7[i].month == m) {
+											name7 = data7[i].subtitle;
 											_results7 = (parseFloat(data7[i].total));
 										}
 									}
@@ -98,7 +129,8 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,m) {
 			                        formatter: function() {
 			                            return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(0) +' %';
 			                        }
-			                    }
+			                    },
+													showInLegend: true
 			                }
 			            },
 									 credits: {
@@ -106,13 +138,14 @@ function showChartResult2(i1,i2,i3,i4,i5,i6,i7,m) {
 									 },
 						       series: [{
 										type: 'pie',
+										name: '业绩指标(元)',
 										data: [
-												{ name: '股票净佣金', y: _results1 },
-												{ name: '债券净佣金', y: _results3 },
-												{ name: '基金净佣金', y: _results4 },
-												{ name: '融资融券担保净佣金', y: _results5 },
-												{ name: '融资融券信用净佣金', y: _results6 },
-												{ name: '创新一号产品总净佣金', y: _results7 }
+												{ name: name1, y: _results1 },
+												{ name: name3, y: _results3 },
+												{ name: name4, y: _results4 },
+												{ name: name5, y: _results5 },
+												{ name: name6, y: _results6 },
+												{ name: name7, y: _results7 }
 										 ]
 						       }]
 				 				});

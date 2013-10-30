@@ -1,33 +1,56 @@
 <script type="text/javascript" charset="utf-8">
 $(function() {
-	showChartResult3(70004,70011,70001,70010, <%= Time.now.strftime("%Y%m") %>);
+	showChartResult3(70011,70002,70001,70010, <%= Time.now.strftime("%Y%m") %>);
+	
+	$('#btn-group-chart3 button').click( function() {
+		var radio = $(this).attr('value');
+		var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
+		switch (radio) {
+		    case "1": showChartResult3(70004,70005,70006,70010, selected);
+				break;
+		    case "2": showChartResult3(70011,70002,70001,70010, selected);
+				break;
+		}
+	});
 });
 
 $('#nav-broker-point-year button').click( function(e) {
 	var selected = $(this).attr('value') + $('#nav-broker-point-month').find('.btn.btn-small.active').attr('value');
-	showChartResult3(70004,70011,70001,70010, selected);
+	var radio = $('#btn-group-chart3').find('.btn.active').attr('value')
+	switch (radio) {
+	    case "1": showChartResult3(70004,70005,70006,70010, selected);
+			break;
+	    case "2": showChartResult3(70011,70002,70001,70010, selected);
+			break;
+	}
 	// console.log(selected);
 });
 
 $('#nav-broker-point-month button').click( function(e) {
 	var selected = $('#nav-broker-point-year').find('.btn.btn-small.active').attr('value') + $(this).attr('value');
-	showChartResult3(70004,70011,70001,70010, selected);
+	var radio = $('#btn-group-chart3').find('.btn.active').attr('value')
+	switch (radio) {
+	    case "1": showChartResult3(70004,70005,70006,70010, selected);
+			break;
+	    case "2": showChartResult3(70011,70002,70001,70010, selected);
+			break;
+	}
 	// console.log(selected);
 });
 
 
 function showChartResult3(i1,i2,i3,i4,m) {
 	_broker = <%= @broker.id %>
-	_url1 = '/brokers/' + _broker + '/brokerindices/' + i1 + '/broker_index.json'
-	_url2 = '/brokers/' + _broker + '/brokerindices/' + i2 + '/broker_index.json'
-	_url3 = '/brokers/' + _broker + '/brokerindices/' + i3 + '/broker_index.json'
-	_url4 = '/brokers/' + _broker + '/brokerindices/' + i4 + '/broker_index.json'
+	_url_1 = '/brokers/' + _broker + '/brokerindices/' + i1 + '/broker_index.json'
+	_url_2 = '/brokers/' + _broker + '/brokerindices/' + i2 + '/broker_index.json'
+	_url_3 = '/brokers/' + _broker + '/brokerindices/' + i3 + '/broker_index.json'
+	_url_4 = '/brokers/' + _broker + '/brokerindices/' + i4 + '/broker_index.json'
 	_width = document.getElementById("tab_page").offsetWidth;
 	// console.log(_url);
-	$.get(_url1, function (data1) {
-		$.get(_url2, function (data2) {
-			$.get(_url3, function (data3) {
-				$.get(_url4, function (data4) {
+	$.get(_url_1, function (data_1) {
+		$.get(_url_2, function (data_2) {
+			$.get(_url_3, function (data_3) {
+				$.get(_url_4, function (data_4) {
 								
 								_results1 = [];
 								_results2 = [];
@@ -36,8 +59,8 @@ function showChartResult3(i1,i2,i3,i4,m) {
 								_month = [];
 								b = null;
 								l = null;
-								for(var i in data1){   
-								if (data1[i].month == m) {
+								for(var i in data_1){   
+								if (data_1[i].month == m) {
 									 b = i
 									 l = b - 5
 									}
@@ -46,30 +69,34 @@ function showChartResult3(i1,i2,i3,i4,m) {
 									l = 0
 								}
 								
-									for(var i in data1){
+									for(var i in data_1){
 										if (i >= l && i <= b) {
-											_month.push(data1[i].month);
-											_results1.push(parseFloat(data1[i].total));
+											_month.push(data_1[i].month);
+											_results1.push(parseFloat(data_1[i].total));
 										}
 									}
 									
-									for(var i in data2){
+									for(var i in data_2){
 										if (i >= l && i <= b) {
-											_results2.push(parseFloat(data2[i].total));
+											_results2.push(parseFloat(data_2[i].total));
 										}
 									}
-									for(var i in data3){
+									for(var i in data_3){
 										if (i >= l && i <= b) {
-											_results3.push(parseFloat(data3[i].total));
+											_results3.push(parseFloat(data_3[i].total));
 										}
 									}
-									for(var i in data4){
+									for(var i in data_4){
 										if (i >= l && i <= b) {
-											_results4.push(parseFloat(data4[i].total));
+											_results4.push(parseFloat(data_4[i].total));
 										}
 									}
 									// console.log('_results1' + _results1 + '_results2' + _results2 + '_results3' + _results3 + '_results4' + _results4 + '_results5' + _results5 + '_results6' + _results6 + '_results7' + _results7);
-
+									_name1 = data_1[i].subtitle;
+									_name2 = data_2[i].subtitle;
+									_name3 = data_3[i].subtitle;
+									_name4 = data_4[i].subtitle;
+									
 								$('#chart_3').highcharts({
 									title: {
 						        text: '半年内客户变动'
@@ -117,19 +144,19 @@ function showChartResult3(i1,i2,i3,i4,m) {
 											 enabled: false
 									 },
 						       series: [{
-										name: '存量客户数',
+										name: _name1,
 										data: _results1
 						       	},
 										{
-										name: '新增客户数',
+										name: _name2,
 										data: _results2
 						       	},
 										{
-										name: '转有效户数',
+										name: _name3,
 										data: _results3
 							      },
 										{
-										name: '流失客户数',
+										name: _name4,
 										data: _results4
 								    }
 									 ]

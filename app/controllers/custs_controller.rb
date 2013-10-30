@@ -20,6 +20,6 @@ class CustsController < ApplicationController
 
   def show
     @cust  = Cust.find(params[:id])
-    @title = @cust.name
+    @title = @cust.cust_name
   end
 end

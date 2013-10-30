@@ -39,9 +39,9 @@
 	  cust.custbrokerrels.first.dis_ratio
 	end
 
-	# if can? :manage, User
-	#   g.column do |cust|
-	#     link_to('设置', custsettings_cust_path(cust))
-	#   end
-	#   end
+	if can? :read, Cust
+	  g.column do |cust|
+	    link_to('详细', cust_path(cust))
+	  end
+	  end
 end -%>
