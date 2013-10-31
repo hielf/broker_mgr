@@ -15,7 +15,13 @@ class SessionsController < ApplicationController
       sign_in user
       @session = Session.new({:user_id => user.id, :login_type => 1})
       @session.save
+      if (signed_in?) && (can? :access_user_first_page, :all)
+        redirect_to brokers_path
+      # elsif (signed_in?) && (can? :access_broker_first_page, :all)
+      #   redirect_to root_path
+      else
       redirect_back_or root_path #user #friendly redirect
+      end
     end
   end
   

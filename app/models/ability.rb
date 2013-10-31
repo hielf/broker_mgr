@@ -33,6 +33,7 @@ class Ability
       can :read, Branch, :id => user.branch_id
       can :read, User,   :id => user.id
       can :update, User, :id => user.id
+      can :read, Broker, :id => Broker.find_by_user_id(user.id).id
       can :crud, Custservvisit
       can :crud, Workflowunderway
       can :read, Workflowhistory

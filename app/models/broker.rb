@@ -13,7 +13,7 @@ class Broker < ActiveRecord::Base
   has_many :brokerproductrels
   has_many :products, :through => :brokerproductrels
   
-  default_scope :order => 'brokers.broker_code'
+  # default_scope :order => 'brokers.broker_code'
   
   scope :typebrokers, lambda { |brokertype| where("broker_type = ?", brokertype) } 
   

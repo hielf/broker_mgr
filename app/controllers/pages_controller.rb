@@ -8,6 +8,8 @@ class PagesController < ApplicationController
       @workflowunderways = Workflowunderway.where(:user_id => current_user.id).limit(5).order('created_at desc')
       @brokerproducts = @broker.products if @broker
       @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
+      
+      # @brokers = Broker.accessible_by(current_ability)
     end
     
   end

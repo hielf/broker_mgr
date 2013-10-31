@@ -1,5 +1,6 @@
 # encoding: utf-8
 class BrokersController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :show]
   
   def show
@@ -16,8 +17,17 @@ class BrokersController < ApplicationController
   end
   
   def index
-    # @categories = Broker.order(:broker_code).where("broker_code LIKE ?", "#{params[:term]}")
-    # render json: @categories.map(&:broker_code)
+    # @brokers = Broker.all
+    @brokers_grid = initialize_grid(Broker, 
+              :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
+              :include => [:branch],
+              :name => 'brokers',
+              :enable_export_to_csv => true,
+              :csv_field_separator => ';',
+              :csv_file_name => '导出',
+              :per_page => 20)
+    @title = "营销人员"
+    export_grid_if_requested('brokers' => 'grid')
   end
   
   def relbrokers
