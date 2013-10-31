@@ -10,6 +10,9 @@ class PagesController < ApplicationController
       @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
       
       # @brokers = Broker.accessible_by(current_ability)
+      if (can? :access_user_first_page, :all)
+        redirect_to brokers_path
+      end
     end
     
   end

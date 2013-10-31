@@ -1,34 +1,5 @@
 <% if (signed_in?) && (can? :access_broker_first_page, :all) %>
-	<div class="row-fluid">
-		<div class="span9">
-			<div class="tabbable tabs">
-			  <ul class="nav nav-tabs">
-			    <li class="active"><a href="#1" data-toggle="tab">客户情况</a></li>
-			    <li><a href="#2" data-toggle="tab">绩效考核</a></li>
-					<li><a href="#3" data-toggle="tab">收入报酬</a></li>
-					<li><a href="#4" data-toggle="tab">营销产品</a></li>
-			  </ul>
-			  <div class="tab-content">
-			    <div class="tab-pane active" id="1">
-						<%= render 'brokers/custs/brokercusts' %>
-			    </div>
-					<div class="tab-pane" id="2">
-						<%= render 'brokers/indices/brokerindices' %>
-			    </div>
-					<div class="tab-pane" id="3">
-						<%= render 'brokers/salarys/brokersalary' %>
-			    </div>
-					<div class="tab-pane" id="4">
-						<%= render 'brokers/products/brokerproducts' %>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="span3">
-			<%= render 'brokers/sidebar_broker' %>
-			<%= render 'workflowunderways/sidebar_workflowunderways' %>
-		</div>
-	</div>
+	<%= render 'brokers/broker' %>
 <% elsif (signed_in?) && (can? :access_user_first_page, :all) %>
 	<%= render 'brokers/brokers' %>
 <% else %>

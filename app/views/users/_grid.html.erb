@@ -12,7 +12,7 @@
     user.name
   end
 
-	g.column :name => '账户状态', :attribute => 'name', :model => Dict, filter: false do |user|
+	g.column :name => '账户状态', :attribute => 'name', filter: false do |user|
 		Dict.find(user.status).name
 	end
 
