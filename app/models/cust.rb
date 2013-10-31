@@ -5,6 +5,7 @@ class Cust < ActiveRecord::Base
   
   belongs_to :branch
   has_many   :custbrokerrels
+  has_many   :custindices
   
   def is_cust?(cust_sym)
     self.any? { |c| c.capital_account == cust_sym }

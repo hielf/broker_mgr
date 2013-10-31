@@ -2,20 +2,20 @@
 	<div class="span9">
 		<div class="row-fluid">
 			<div class="span12 well well-small">
-			<legend><p class="lead text-center muted">客户业绩</p></legend>
-				<% if @broker.salaries.any? %>
+			<legend><p class="lead text-center muted">客户业绩（半年内）</p></legend>
+				<% if @cust.custindices.any? %>
 				<div class="accordion" id="accordion1">
-					<% @broker.salaries.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
+					<% @cust.custindices.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
 						<% if index >= 0 && index <= 5 %>
 							<div class="accordion-group">
 								<div class="accordion-heading">
 									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%=month.month_id%>">
-										薪酬报告 #<%= month.month_id %>
+										客户业绩 #<%= month.month_id %>
 									</a>
 								</div>
 								<div id="collapse<%=month.month_id%>" <% if index == 0 %>class="collapse in"<% else %>class="collapse"<% end %>>
 									<div class="accordion-inner">
-										<%= render :partial => 'salaries/salary', :locals => { :object => broker_salary(@broker,month.month_id) } %>
+										<%= render :partial => 'custindices/custindex', :locals => { :object => cust_index(@cust,month.month_id) } %>
 									</div>
 								</div>
 							</div>
@@ -29,20 +29,7 @@
 		</div>
 	</div>
 	<div class="span3">
-		<div>
-			<div class="sidebar-nav well">
-				<legend>
-					<h4><%= link_to @cust.cust_name, cust_path(@cust), :class => "link" %></h4>
-				</legend>
-				<address>
-					<strong>资金账号：</strong><%= @cust.capital_account %><br/>
-					<strong>开户日期：</strong><%= @cust.open_date.to_time.strftime("%F") if @cust.open_date %><br/>
-					<strong>转有效：</strong><%= @cust.valid_date.to_time.strftime("%F") if @cust.valid_date %><br/>
-					<strong>转考核有效：</strong><%= @cust.assessment_date.to_time.strftime("%F") if @cust.assessment_date %><br/>
-					<ul class="common-divider"></ul>
-				</address>
-			</div>
-		</div>
+		<%= render 'sidebar_cust' %>
 		<div class="alert alert-block">
 			<button type="button" class="close" data-dismiss="alert">&times;</button>
 			<h4>帮助</h4>
