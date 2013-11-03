@@ -14,7 +14,7 @@ class Ability
       can :access_user_first_page, :all
       can :read, Branch, :id => user.branch_id
       can :read, User,   :branch_id => user.branch_id
-      can :read, Broker, :branch_id => user.branch_id
+      can :manage, Broker, :branch_id => user.branch_id
       can :crud, Custservvisit
       can :read, Workflowhistory
       can :read, Product
@@ -24,6 +24,7 @@ class Ability
       can :read, Department, :id => user.department_id
       can :read, Branch, :department_id => user.department_id
       can :read, User,   :department_id => user.department_id
+      can :manage, Broker, :branch_id => user.department.branches.map {|b| b.id}
       can :crud, Custservvisit
       can :read, Workflowhistory
       can :read, Product

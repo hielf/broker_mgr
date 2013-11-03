@@ -5,9 +5,14 @@ class WorkflowhistoriesController < ApplicationController
   def index
     @title = "已办列表"
     @workflowhistories = Workflowhistory.order("code").paginate(:page => params[:page]).per_page(20)
+    if params[:broker_id]
+      @user = Broker.find(params[:broker_id]).user
+    else
+      @user = current_user
+    end
     # @department = params[:department]
     @workflowhistories_grid = initialize_grid(Workflowhistory, 
-              :conditions => {:user_id => current_user.id}, 
+              :conditions => {:user_id => @user.id}, 
               :include => [:workflow],
               :name => 'workflowhistory',
               # :enable_export_to_csv => true,

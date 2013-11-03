@@ -5,7 +5,11 @@ class CustsController < ApplicationController
   def index
     @custs = Cust.order("name").paginate(:page => params[:page]).per_page(20)
     @department = params[:department]
-    @broker = Broker.find_by_user_id(current_user.id)
+    if params[:broker_id]
+      @broker = Broker.find(params[:broker_id])
+    else
+      @broker = Broker.find_by_user_id(current_user.id)
+    end
     @custs_grid = initialize_grid(Cust, 
               :conditions => {:id => @broker.custs.map{|cust| [cust.id]}}, 
               :include => [:branch, :custbrokerrels],

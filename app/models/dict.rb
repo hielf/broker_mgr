@@ -1,6 +1,10 @@
 class Dict < ActiveRecord::Base
   # attr_accessible :code, :dict_type, :name
 
+  def to_option
+    [name, id]
+  end
+  
 end
 # == Schema Information
 #

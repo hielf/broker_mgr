@@ -17,7 +17,13 @@
     broker.branch.name if broker.branch
   end
 
-	g.column :name => '当前状态', :attribute => 'broker_status', filter: false do |broker|
+	g.column :name => '人员类型', :attribute => 'broker_type', 
+					 :detach_with_id => :type_filter, custom_filter: Dict.where(:dict_type => 'BrokerBase.brokerType').map{|d| [d.name, d.id]} do |broker|
+		Dict.find(broker.broker_type).name if broker.broker_type
+	end
+
+	g.column :name => '当前状态', :attribute => 'broker_status', 
+					 :detach_with_id => :status_filter, custom_filter: Dict.where(:dict_type => 'BrokerBase.status').map{|d| [d.name, d.id]} do |broker|
 		Dict.find(broker.broker_status).name if broker.broker_status
 	end
 	

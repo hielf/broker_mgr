@@ -9,6 +9,9 @@ class BrokersController < ApplicationController
     @branch = @broker.branch
     @father_department = @branch.department
     @salary_months = @broker.brokerindices.limit(3).where(:indextype => 2009).reverse_order
+    @workflowunderways = Workflowunderway.where(:user_id => @broker.user_id).limit(5).order('created_at desc')
+    @brokerproducts = @broker.products
+    @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
     
     respond_to do |format|
       format.html # show.html.erb
