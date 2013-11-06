@@ -62,16 +62,20 @@ class UsersController < ApplicationController
     if @assignments.present?
        @user.update_attribute :role_ids, params[:user][:role_ids]
        @user.update_attribute :userposition_ids, params[:user][:userposition_ids]
-        redirect_to users_path, :flash => { :success => "用户设置成功" }
+        redirect_to users_path, :flash => { :success => "用户权限设置成功" }
     elsif @department.present?
        @user.update_attribute :department_id, params[:user][:department_id]
         redirect_to @user, :flash => { :success => "用户所辖分公司设置成功" }
     else
       if @user.update_attributes(params[:user])
-        redirect_to @user, :flash => { :success => "用户设置成功" }
+        # redirect_to @user, :flash => { :success => "用户设置成功" }
       else  
         @title = "用户设置"
         render 'edit'
+      end
+      respond_to do |format|
+         format.html { redirect_to @user, :flash => { :success => "用户设置成功" } }
+         format.js
       end
     end
   end
