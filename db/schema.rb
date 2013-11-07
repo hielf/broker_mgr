@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131031073115) do
+ActiveRecord::Schema.define(:version => 20131107170730) do
 
   create_table "KSTAR.test_broker", :id => false, :force => true do |t|
     t.integer "branch_no",         :limit => 5,  :precision => 5,  :scale => 0, :null => false
