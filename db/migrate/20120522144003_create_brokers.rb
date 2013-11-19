@@ -20,7 +20,6 @@ class CreateBrokers < ActiveRecord::Migration
     #   t.string :phone
     #   t.string :fax
     #   t.string :email
-    #   t.string :birthday
     #   t.string :bank_account
     #   t.string :graduate_college
     #   t.string :graduate_date
