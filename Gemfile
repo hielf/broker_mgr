@@ -19,26 +19,34 @@ group :assets do
   gem "therubyracer"
   gem "less-rails"
   gem 'twitter-bootstrap-rails'
+  #gem 'anjlab-bootstrap-rails', '>= 3.0.0.0', :require => 'bootstrap-rails'
+  gem 'jquery-ui-rails'
+  gem 'highcharts-rails', '~> 3.0.7'
 end
 
 gem 'will_paginate', '~> 3.0.3'
 gem 'bootstrap-will_paginate', '~> 0.0.6'
 gem 'jquery-rails'
 gem 'simple_form'
-gem 'lazy_high_charts', '~> 1.1.5'
+# gem 'lazy_high_charts', '~> 1.5.0'
 gem 'rabl'
 gem 'yajl-ruby', :require => "yajl"
 gem 'gon'
+gem 'cancan'
+gem 'wicked'
+gem "wice_grid", '3.3.1'
+gem 'datetimepicker-rails', :require => 'datetimepicker-rails', 
+                            :git => 'git://github.com/zpaulovics/datetimepicker-rails.git'
 # gem 'simple-navigation'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
@@ -60,6 +68,8 @@ group :development do
   gem 'annotate', '~> 2.4.1.beta'
   gem 'faker', '1.0.1'
   gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 group :test do

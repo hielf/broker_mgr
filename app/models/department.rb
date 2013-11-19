@@ -14,10 +14,17 @@
 
 class Department < ActiveRecord::Base
   attr_accessible :code, :name
-  has_many :branches
-  has_many :deptindices
+  
+  has_many   :users
+  has_many   :branches
+  has_many   :deptindices
   
   default_scope   :order => 'departments.code'
+  
+  def to_label
+    "#{code} | #{name}"
+  end
+  
 end
 
 

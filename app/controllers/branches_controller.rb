@@ -1,5 +1,6 @@
 # encoding: utf-8
 class BranchesController < ApplicationController
+  load_and_authorize_resource
   before_filter :authenticate, :only => [:index, :show]
   
   def index

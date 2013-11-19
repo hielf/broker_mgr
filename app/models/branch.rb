@@ -16,10 +16,17 @@
 class Branch < ActiveRecord::Base
   attr_accessible :code, :name
   belongs_to :department
+  
+  has_many :users
   has_many :brokers
   has_many :branchindices
+  has_many :custs
   
   default_scope   :order => 'branches.code' 
+  
+  def to_label
+    "#{code} | #{name}"
+  end
   
   # def typebrokers(broker_type)
   #   Broker.typebrokers(broker_type)

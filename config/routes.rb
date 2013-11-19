@@ -1,5 +1,18 @@
 Cmwp::Application.routes.draw do
-  resources :users
+  resources :users do
+    get 'usersettings', :on => :member
+  end
+  resources :roles
+  resources :userpositions
+  resources :workflows
+  resources :workflowhistories
+  resources :custs
+  resources :products
+  resources :brokerproductrels, :only => [:create, :destroy]
+  resources :workflowunderways do
+    resources :workflow_steps, :custservvisits
+  end
+  # resources :workflow_steps
   resources :sessions, :only => [:new, :create, :destroy]
   resources :departments, :only => [:index, :show] do
     resources :deptindices do
@@ -15,6 +28,9 @@ Cmwp::Application.routes.draw do
   resources :brokers, :only => [:index, :show] do
     resources :brokerindices do
       get 'broker_index', :on => :member
+    end
+    resources :salaries do
+      get 'broker_salary', :on => :member
     end
     member do
       get :relbrokers

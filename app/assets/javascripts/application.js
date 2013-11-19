@@ -5,7 +5,11 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery-ui
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require twitter/bootstrap
+//= require wice_grid
 //= require_tree .
+//= require bootstrap-datetimepicker
+//= require highcharts
+//= require highcharts/modules/exporting

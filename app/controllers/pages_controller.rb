@@ -4,7 +4,17 @@ class PagesController < ApplicationController
     @title = "首页"
     if signed_in?
       @title = "首页"
+      @broker = Broker.find_by_user_id(current_user.id) unless Broker.find_by_user_id(current_user.id).nil?
+      @workflowunderways = Workflowunderway.where(:user_id => current_user.id).limit(5).order('created_at desc')
+      @brokerproducts = @broker.products if @broker
+      @newproducts = Product.find(:all, :order => "id desc", :limit => 10)
+      
+      # @brokers = Broker.accessible_by(current_ability)
+      if (can? :access_user_first_page, :all)
+        redirect_to brokers_path
+      end
     end
+    
   end
 
   def contact
@@ -19,8 +29,4 @@ class PagesController < ApplicationController
     @title = "帮助"
   end
   
-  def todo
-    @title = "代办事项"
-    @date = params[:date] ? Date.parse(params[:date]) : Date.today
-  end
 end

@@ -13,7 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /tmp
 
-Gemfile.lock
 doc/api
 doc/app
 *.swp
@@ -21,3 +20,5 @@ doc/app
 .DS_Store
 *.log
 /webrat.log
+
+/config/database.yml

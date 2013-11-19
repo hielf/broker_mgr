@@ -1,0 +1,7 @@
+<% if get_num(999999) == 2 %>
+	<%= render 'salaries/table_c1' %>
+<% elsif get_num(999999) == 3 %>
+	<%= render 'salaries/table_c2' %>
+<% else %>
+	<%= render 'salaries/table_a' %>
+<% end %>

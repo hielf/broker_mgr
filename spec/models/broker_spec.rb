@@ -7,20 +7,13 @@ end
 #
 # Table name: brokers
 #
-#  id                   :integer(4)      not null, primary key
+#  id                   :integer(38)     not null, primary key
 #  broker_code          :string(255)
 #  broker_name          :string(255)
-#  branch_id            :integer(4)
-#  broker_type          :string(255)
-#  gender               :string(255)
-#  age                  :integer(4)
-#  broker_level         :string(255)
-#  broker_status        :string(255)
-#  jobstatus            :string(255)
-#  employee_code        :string(255)
+#  branch_id            :integer(38)
+#  age                  :integer(38)
 #  open_date            :string(255)
 #  close_date           :string(255)
-#  certificate_type     :string(255)
 #  certificate_num      :string(255)
 #  certificate_addr     :string(255)
 #  mobile               :string(255)
@@ -41,19 +34,25 @@ end
 #  cert_valite_date     :string(255)
 #  cert_get_date        :string(255)
 #  exam_pass_date       :string(255)
-#  risk_balance         :float
-#  broker_degree        :string(255)
-#  post                 :string(255)
 #  job_qualify          :string(255)
 #  passed_exam          :string(255)
 #  broker_qualify       :string(255)
-#  zqbz                 :string(255)
 #  personnel_manning    :string(255)
-#  region_manager       :string(255)
-#  team_name            :string(255)
 #  remark               :text
 #  created_at           :datetime
 #  updated_at           :datetime
 #  avatar               :string(255)
+#  broker_type          :integer(38)
+#  user_id              :integer(38)
+#  region_manager       :boolean(1)
+#  gender               :integer(38)
+#  broker_level         :integer(38)
+#  broker_status        :integer(38)
+#  jobstatus            :integer(38)
+#  user_code            :string(255)
+#  certificate_type     :integer(38)
+#  risk_balance         :decimal(, )
+#  broker_degree        :integer(38)
+#  zqbz                 :integer(38)
 #
 

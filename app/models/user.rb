@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id                 :integer(4)      not null, primary key
+#  id                 :integer(38)     not null, primary key
 #  name               :string(255)
 #  email              :string(255)
 #  created_at         :datetime
@@ -10,12 +10,24 @@
 #  encrypted_password :string(255)
 #  salt               :string(255)
 #  admin              :boolean(1)      default(FALSE)
+#  usercode           :string(255)
+#  branch_id          :integer(38)
+#  department_id      :integer(38)
+#  status             :integer(38)
+#  user_type          :integer(38)
 #
 
 class User < ActiveRecord::Base
   attr_accessor   :password
-  attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids
+  attr_accessible :name, :email, :password, :usercode, :password_confirmation, :userposition_ids,
+                  :role_ids, :branch_id, :department_id
   
+  belongs_to :branch
+  belongs_to :department
+  
+  has_many :sessions
+  has_many :assignments
+  has_many :roles, :through => :assignments
   has_many :userpositionrels, :dependent => :destroy, 
                               :foreign_key => "userid"
   has_many :userpositions, :through => :userpositionrels, 
@@ -25,14 +37,21 @@ class User < ActiveRecord::Base
   
   validates :name,  :presence   => true,
                     :length     => { :maximum => 20 }
-  # validates :email, :presence   => true,
-  #                   :format     => { :with => email_regex  },
-  #                   :uniqueness => { :case_sensitive => false }
+  validates :usercode, :presence   => true,
+                       :uniqueness => true
   validates :password, :presence     => true,
                        :confirmation => true,
                        :length       => { :within => 5..20 }
                        
   before_save :encrypt_password
+  
+  default_scope  :order => 'users.usercode' 
+  
+  scope :valid_user, where(:status => Dict.find_by_dict_type_and_code("UserBase.status", 1) ) 
+  
+  def to_label
+    "#{usercode} | #{name}"
+  end
   
   def has_password?(submitted_password)
     encrypted_password == encrypt(submitted_password)
@@ -42,9 +61,17 @@ class User < ActiveRecord::Base
     userpositionrels.create!(:positionid => position.id )
   end
   
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+  
+  def has_position?(position_sym)
+    userpositions.any? { |p| p.name.underscore.to_sym == posposition_symition }
+  end
+  
   class << self
     def authenticate(usercode, submmited_password)
-      user = User.find_by_usercode(usercode)
+      user = User.find_by_usercode_and_status(usercode, Dict.find_by_dict_type_and_code("UserBase.status", 1))
       (user && user.has_password?(submmited_password)) ? user : nil
       # 与上面相同
       # return nil  if user.nil?
@@ -62,7 +89,9 @@ class User < ActiveRecord::Base
   private 
     def encrypt_password
       self.salt = make_salt if new_record?
-      self.encrypted_password = encrypt(password)
+      if password != nil
+        self.encrypted_password = encrypt(password)
+      end
     end
     
     def encrypt(string)

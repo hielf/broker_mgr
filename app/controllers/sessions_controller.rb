@@ -13,12 +13,25 @@ class SessionsController < ApplicationController
       render 'new'
     else
       sign_in user
-      redirect_back_or departments_path #user #friendly redirect
+      @session = Session.new({:user_id => user.id, :login_type => 1})
+      @session.save
+      if (signed_in?) && (can? :access_user_first_page, :all)
+        redirect_to brokers_path
+      # elsif (signed_in?) && (can? :access_broker_first_page, :all)
+      #   redirect_to root_path
+      else
+        if Usersign.find_by_user_id_and_sign_date(user.id, Date.today).nil?
+          Usersign.create(:user_id => user.id, :sign_date => Date.today)
+          redirect_to root_path, :flash => { :success => "您今日已成功签到" }
+        else
+          redirect_back_or root_path #user #friendly redirect
+        end
+      end
     end
   end
   
   def destroy
     sign_out
-    redirect_to root_path
+    redirect_to root_path, :flash => { :alert => "您已退出" }
   end
 end
