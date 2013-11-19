@@ -13,7 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /tmp
 
-Gemfile.lock
 doc/api
 doc/app
 *.swp
