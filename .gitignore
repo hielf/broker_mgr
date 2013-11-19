@@ -21,3 +21,5 @@ doc/app
 .DS_Store
 *.log
 /webrat.log
+
+/config/database.yml
