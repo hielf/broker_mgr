@@ -4,7 +4,7 @@ class CustservvisitsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate
   
-  steps :custserv_one, :custserv_two
+  # steps :custserv_one, :custserv_two
   
   def new
     @custservvisit  = Custservvisit.new
