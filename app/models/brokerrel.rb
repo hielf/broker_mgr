@@ -1,4 +1,4 @@
-
+# encoding: utf-8
 class Brokerrel < ActiveRecord::Base
   belongs_to :broker,    :class_name => "Broker"
   belongs_to :relbroker, :class_name => "Broker"

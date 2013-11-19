@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Workflowunderway < ActiveRecord::Base
   attr_accessible :content, :workflow_id, :remark, :step, :user_id, :custservvisit_attributes
   

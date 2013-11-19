@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Salary < ActiveRecord::Base
   attr_accessible :broker_id, :indextype, :month_id, :occursum, :remark
   

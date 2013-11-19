@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Dict < ActiveRecord::Base
   # attr_accessible :code, :dict_type, :name
 

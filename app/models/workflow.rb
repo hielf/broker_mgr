@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Workflow < ActiveRecord::Base
   attr_accessible :code, :name, :steps, :workflowsteps_attributes
   

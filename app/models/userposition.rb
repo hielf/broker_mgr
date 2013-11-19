@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Userposition < ActiveRecord::Base
   attr_accessible :name
   

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Custservvisit < ActiveRecord::Base
   attr_accessor   :user_name
   attr_accessible :assit_user_id, :attchment_file, :location, :memo, :plan_date, :status,

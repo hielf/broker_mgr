@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Workflowhistory < ActiveRecord::Base
   attr_accessible :content, :workflow_id, :remark, :user_id, :id
   

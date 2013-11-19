@@ -1,3 +1,4 @@
+# encoding: utf-8
 class WorkflowhistoriesController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate

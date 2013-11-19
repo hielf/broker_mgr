@@ -1,3 +1,4 @@
+# encoding: utf-8
 module PagesHelper
   def time_period(time)
     @timepassed = time

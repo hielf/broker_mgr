@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Userpositionrel < ActiveRecord::Base
   attr_accessible :expiredate, :positionid, :userid
   

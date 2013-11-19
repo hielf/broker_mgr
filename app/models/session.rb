@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Session < ActiveRecord::Base
   attr_accessor :usercode, :password
   attr_accessible :login_type, :user_id, :created_at

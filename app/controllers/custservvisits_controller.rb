@@ -1,3 +1,4 @@
+# encoding: utf-8
 class CustservvisitsController < ApplicationController
   # include Wicked::Wizard
   load_and_authorize_resource

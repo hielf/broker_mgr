@@ -1,3 +1,4 @@
+# encoding: utf-8
 class RolesController < ApplicationController
   before_filter :authenticate
   
