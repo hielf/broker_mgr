@@ -1,9 +1,8 @@
 require "bundler/capistrano"
-require "capistrano-rbenv"
 
 server "10.0.0.6", :web, :app, :db, primary: true
 
-set :rbenv_ruby_version, "1.9.3-p385"
+# set :rbenv_ruby_version, "1.9.3-p385"
 set :application, "broker_mgr"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
