@@ -48,8 +48,8 @@ Cmwp::Application.routes.draw do
   match '/signup',  :to => 'users#new' 
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'  
+  match '/pwd',     :to => 'pages#password' 
   
-  match '/todo',    :to => 'pages#todo'  
   
   # match 'categories' => 'categories#show', :via => :get
   

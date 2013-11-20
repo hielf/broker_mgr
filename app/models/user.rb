@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
                        
   before_save :encrypt_password
   
-  default_scope  :order => 'users.usercode' 
+  # default_scope  :order => 'users.usercode' 
   
   scope :valid_user, where(:status => Dict.find_by_dict_type_and_code("UserBase.status", 1) ) 
   
