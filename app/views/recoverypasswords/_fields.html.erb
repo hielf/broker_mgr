@@ -1,0 +1,15 @@
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">密码重置</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_for(:recoverypassword, :url => recoverypasswords_path ) do |p| %>
+      <%= p.text_field :usercode, :label => false, placeholder: "用户代码" %>
+      <%= p.text_field :certificate_num, :label => false, placeholder: "证件号码" %>
+  </div>
+  <div class="modal-footer">
+    <%= p.submit "确认", :class => 'btn btn-primary' %>
+  </div>
+    <% end %>
+</div>

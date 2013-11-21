@@ -14,6 +14,7 @@ Cmwp::Application.routes.draw do
   end
   # resources :workflow_steps
   resources :sessions, :only => [:new, :create, :destroy]
+  resources :recoverypasswords, :only => [:new, :create]
   resources :departments, :only => [:index, :show] do
     resources :deptindices do
       get 'dept_index', :on => :member
@@ -48,7 +49,7 @@ Cmwp::Application.routes.draw do
   match '/signup',  :to => 'users#new' 
   match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'  
-  match '/pwd',     :to => 'pages#password' 
+  # match '/pwd',     :to => 'recoverypassword#new' 
   
   
   # match 'categories' => 'categories#show', :via => :get

@@ -9,11 +9,12 @@
 								<%= f.submit "确认", :class => 'btn btn-info' %>
 								<%= link_to '取消', root_path, :class => 'btn' %>
 							</p>
-							<p class="text-right text-info">
-								<%= link_to '忘记密码？', pwd_path %>
-							</p>
-						</div>
 				<% end %>
+							<p class="text-right text-info">
+								<a href="#myModal" role="button" data-toggle="modal">忘记密码？</a>
+							</p>
+							<%= render 'recoverypasswords/fields' %>
+						</div>
 		</div>
 	</div>
 </div>

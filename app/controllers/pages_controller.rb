@@ -28,10 +28,5 @@ class PagesController < ApplicationController
   def help
     @title = "帮助"
   end
-
-  def password
-    @user  = User.new
-    @title = "忘记密码"
-  end
   
 end
