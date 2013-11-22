@@ -36,7 +36,7 @@
 	end
 	
 	g.column :name => '销户日期', :attribute => 'close_date', filter: false do |broker|
-		broker.open_date
+		broker.close_date
 	end
 	
 	if can? :manage, Broker
