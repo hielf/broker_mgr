@@ -12,6 +12,10 @@ class RecoverypasswordsController < ApplicationController
       redirect_to root_path, :flash => { :error => "输入不正确，请重新输入" }
     else
       user = broker.user
+      Passwordresetlog.create(:user_id => user.id,
+                              :confirm_code => rand(999999), 
+                              :mobile => broker.mobile, 
+                              :status => 0)
       user.update_attributes(:name => user.name, 
       											 :usercode => user.usercode, 
       											 :password => "888888", 
