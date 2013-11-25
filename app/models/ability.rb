@@ -16,7 +16,7 @@ class Ability
       can :read, Branch, :id => user.branch_id
       can :read, User,   :branch_id => user.branch_id
       can :manage, Broker, :branch_id => user.branch_id
-      can :crud, Custservvisit
+      can :read, Custservvisit
       can :read, Workflowhistory
       can :read, Product
       
@@ -26,7 +26,17 @@ class Ability
       can :read, Branch, :department_id => user.department_id
       can :read, User,   :department_id => user.department_id
       can :manage, Broker, :branch_id => user.department.branches.map {|b| b.id}
-      can :crud, Custservvisit
+      can :read, Custservvisit
+      can :read, Workflowhistory
+      can :read, Product
+
+    elsif user.has_role? :销售交易部管理
+      can :access_user_first_page, :all
+      can :read, Department
+      can :read, Branch
+      can :read, User
+      can :manage, Broker
+      can :read, Custservvisit
       can :read, Workflowhistory
       can :read, Product
       

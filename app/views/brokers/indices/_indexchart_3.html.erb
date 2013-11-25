@@ -57,8 +57,8 @@ function showChartResult3(i1,i2,i3,i4,m) {
 								_results3 = [];
 								_results4 = [];
 								_month = [];
-								b = null;
-								l = null;
+								b = 0;
+								l = 0;
 								for(var i in data_1){   
 								if (data_1[i].month == m) {
 									 b = i
@@ -68,26 +68,25 @@ function showChartResult3(i1,i2,i3,i4,m) {
 								if (l < 0) {
 									l = 0
 								}
-								
 									for(var i in data_1){
-										if (i >= l && i <= b) {
+										if ((i-l)*(b-i)>=0) {
 											_month.push(data_1[i].month);
 											_results1.push(parseFloat(data_1[i].total));
 										}
 									}
 									
 									for(var i in data_2){
-										if (i >= l && i <= b) {
+										if ((i-l)*(b-i)>=0) {
 											_results2.push(parseFloat(data_2[i].total));
 										}
 									}
 									for(var i in data_3){
-										if (i >= l && i <= b) {
+										if ((i-l)*(b-i)>=0) {
 											_results3.push(parseFloat(data_3[i].total));
 										}
 									}
 									for(var i in data_4){
-										if (i >= l && i <= b) {
+										if ((i-l)*(b-i)>=0) {
 											_results4.push(parseFloat(data_4[i].total));
 										}
 									}

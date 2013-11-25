@@ -38,7 +38,7 @@ function showChartResult4(i,m) {
 		}
 		console.log("b:" + b + " l:" + l)
 		for(var i in data){
-			if (i >= l && i <= b) {
+			if ((i-l)*(b-i)>=0) {
 				_month.push(data[i].month);
 				_results.push(parseFloat(data[i].total));
 			}
