@@ -14,7 +14,9 @@ Cmwp::Application.routes.draw do
   end
   # resources :workflow_steps
   resources :sessions, :only => [:new, :create, :destroy]
-  resources :recoverypasswords, :only => [:new, :create]
+  resources :recoverypasswords do
+    get 'confirm', :on => :collection
+  end
   resources :departments, :only => [:index, :show] do
     resources :deptindices do
       get 'dept_index', :on => :member

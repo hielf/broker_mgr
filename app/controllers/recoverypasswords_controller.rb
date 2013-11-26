@@ -2,6 +2,7 @@
 class RecoverypasswordsController < ApplicationController
 	def new
     @title = "忘记密码"
+    flash.now[:error] = "注意！提交申请后，您注册的手机会收到一条验证码。"
   end
  
   def create
@@ -9,18 +10,46 @@ class RecoverypasswordsController < ApplicationController
                              															params[:recoverypassword][:certificate_num])
     if broker.nil?
       @title = "忘记密码"
-      redirect_to root_path, :flash => { :error => "输入不正确，请重新输入" }
+      respond_to do |format|
+         format.html { redirect_to root_path, :flash => { :error => "输入不正确，请重新输入" } }
+         format.js { render :action => "reject" }
+      end
     else
       user = broker.user
-      Passwordresetlog.create(:user_id => user.id,
-                              :confirm_code => rand(999999), 
-                              :mobile => broker.mobile, 
-                              :status => 0)
-      user.update_attributes(:name => user.name, 
-      											 :usercode => user.usercode, 
-      											 :password => "888888", 
-      											 :password_confirmation => "888888")
-      redirect_to root_path, :flash => { :success => "密码初始化成功" }
+      @recoverypassword = Passwordresetlog.find_or_create_by_user_id_and_status(
+                                          :user_id => user.id,
+                                          :confirm_code => rand(999999), 
+                                          :mobile => broker.mobile, 
+                                          :status => 0)
+      respond_to do |format|
+         format.html { redirect_to root_path, :flash => { :success => "请查收短信确认码" } }
+         format.js
+      end
+    end
+  end
+
+  def confirm
+    @title = "输入短信确认码"
+  end
+
+  def update
+    @recoverypassword = Passwordresetlog.find(params[:passwordresetlog][:passwordresetlog_id])
+    @user = User.find(@recoverypassword.user_id)
+    if @recoverypassword.confirm_code == params[:passwordresetlog][:confirm_code]
+       @user.update_attributes(:name => @user.name, 
+                               :usercode => @user.usercode, 
+                               :password => "888888", 
+                               :password_confirmation => "888888")
+      @recoverypassword.update_attribute :status, 1
+      respond_to do |format|
+           format.html { redirect_to root_path, :flash => { :success => "密码初始化成功" } }
+           format.js
+      end
+    else
+      respond_to do |format|
+           format.html { redirect_to root_path, :flash => { :error => "验证码输入错误，请稍后再试" } }
+           format.js
+      end
     end
   end
 end
