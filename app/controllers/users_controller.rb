@@ -68,14 +68,13 @@ class UsersController < ApplicationController
         redirect_to @user, :flash => { :success => "用户所辖分公司设置成功" }
     else
       if @user.update_attributes(params[:user])
-        # redirect_to @user, :flash => { :success => "用户设置成功" }
+        respond_to do |format|
+           format.html { redirect_to @user, :flash => { :success => "用户设置成功" } }
+           format.js
+        end
       else  
         @title = "用户设置"
         render 'edit'
-      end
-      respond_to do |format|
-         format.html { redirect_to @user, :flash => { :success => "用户设置成功" } }
-         format.js
       end
     end
   end
