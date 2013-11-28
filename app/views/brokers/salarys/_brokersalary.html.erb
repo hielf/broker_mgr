@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span12 well well-small">
+	<div class="span12">
 		<% if @broker.salaries.any? %>
 		<div class="accordion" id="accordion1">
 			<% @broker.salaries.select(:month_id).order(:month_id).reverse_order.uniq.each_with_index do |month,index| %>
