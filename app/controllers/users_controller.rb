@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @department = params[:department]
     # usergrid = User.accessible_by(current_ability, :read)
     @users_grid = initialize_grid(User, 
-              :conditions => {:branch_id => Branch.accessible_by(current_ability).map{|br| [br.id]}}, 
+              :conditions => {:department_id => Department.accessible_by(current_ability).map{|dp| [dp.id]}}, 
               :include => [:department, :branch],
               :name => 'users',
               :enable_export_to_csv => true,

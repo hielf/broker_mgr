@@ -21,7 +21,7 @@
     user.department.name if user.department
   end
 
-	g.column :name => '所辖营业部', :attribute => 'id', :model => Branch, 
+	g.column :name => '所属营业部', :attribute => 'id', :model => Branch, 
 					 :detach_with_id => :branch_filter, custom_filter: Branch.accessible_by(current_ability).map{|br| [br.name, br.id]}  do |user|
     user.branch.name if user.branch
   end

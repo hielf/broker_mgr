@@ -1,6 +1,6 @@
 require "bundler/capistrano"
 
-server "10.188.105.20", :web, :app, :db, primary: true
+server "192.168.11.18", :web, :app, :db, primary: true
 
 # set :rbenv_ruby_version, "1.9.3-p385"
 set :application, "broker_mgr"
