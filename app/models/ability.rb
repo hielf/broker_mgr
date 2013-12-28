@@ -11,10 +11,12 @@ class Ability
       can :manage, :all
       can :access_user_first_page, :all
       cannot :access_broker_first_page, :all
+
     elsif user.has_role? :营业部管理
       can :access_user_first_page, :all
       can :read, Branch, :id => user.branch_id
-      can :manage, User,   :branch_id => user.branch_id
+      can :read, User,   :branch_id => user.branch_id
+      can :update, User,   :branch_id => user.branch_id
       can :manage, Broker, :branch_id => user.branch_id
       can :read, Custservvisit
       can :read, Workflowhistory
@@ -25,7 +27,8 @@ class Ability
       can :access_user_first_page, :all
       can :read, Department, :id => user.department_id
       can :read, Branch, :department_id => user.department_id
-      can :manage, User,   :department_id => user.department_id
+      can :read, User,   :department_id => user.department_id
+      can :update, User,   :department_id => user.department_id
       can :manage, Broker, :branch_id => user.department.branches.map {|b| b.id}
       can :read, Custservvisit
       can :read, Workflowhistory
@@ -46,7 +49,8 @@ class Ability
     elsif user.has_role? :营销人员
       can :access_broker_first_page, :all
       can :read, Branch, :id => user.branch_id
-      can :manage, User,   :id => user.id
+      can :read, User,   :id => user.id
+      can :update, User,   :id => user.id
       can :read, Broker, :id => Broker.find_by_user_id(user.id).id
       can :crud, Custservvisit
       can :crud, Workflowunderway
