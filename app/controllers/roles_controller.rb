@@ -37,7 +37,7 @@ class RolesController < ApplicationController
   def update
     @role  = Role.find(params[:id])
     if @role.update_attributes(params[:role])
-      redirect_to @role, :flash => { :success => "角色更新成功" }
+      redirect_to roles_path, :flash => { :success => "角色更新成功" }
     else  
       @title = "角色设置"
       render 'edit'

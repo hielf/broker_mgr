@@ -19,12 +19,18 @@
 							    <li><%= link_to "个人资料", user_path(current_user) %>
 									<% if can? :manage, User %>
 										<li><%= link_to "用户管理", users_path %>
+									<% end %>
+									<% if can? :manage, Role %>
 										<li><%= link_to "角色设置", roles_path %>
+									<% end %>
+									<% if can? :manage, Userposition %>
 										<li><%= link_to "岗位设置", userpositions_path %>
+									<% end %>
+									<% if can? :manage, Workflow %>
 										<li><%= link_to "工作流",  workflows_path %>
 									<% end %>
-									<li class="divider">
-										<li><%= link_to "密码变更", edit_user_path(current_user) %>
+								<li class="divider">
+								<li><%= link_to "密码变更", edit_user_path(current_user) %>
 							  </ul>
 					 	<% end %>
 							<li><%= link_to "帮助", help_path %>

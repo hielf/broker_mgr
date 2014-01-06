@@ -40,6 +40,9 @@ class Ability
       can :read, Department
       can :read, Branch
       can :manage, User
+      can :manage, Role
+      can :manage, Userposition
+      can :manage, Workflow
       can :manage, Broker
       can :read, Custservvisit
       can :read, Workflowhistory
