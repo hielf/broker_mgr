@@ -26,7 +26,6 @@ class Department < ActiveRecord::Base
     "#{code} | #{name}"
   end
   
-  
 end
 
 
